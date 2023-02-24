@@ -1,0 +1,31 @@
+.residencial {
+    padding: 100px;
+}
+
+.comercial {
+    padding: 100px;
+}
+
+p {
+    font-weight: bold;
+}
+
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-submit input {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 200px;
+    padding: 20px 40px;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.btn-submit input:hover {
+    background-color: darkblue;
+    color: #fff;
+}
