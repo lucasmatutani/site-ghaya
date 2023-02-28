@@ -11,41 +11,52 @@
 </head>
 
 <body>
-    <form action="cadastro_sql.php" method="POST">
+    <form action="cadastro_sql.php" method="POST" id="form-cadastro" enctype="multipart/form-data">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-4">
                 <div class="col">
+                    <p>O Imóvel é</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="1" required>
+                        <label class="form-check-label" for="inlineRadio1">Venda</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio2" value="2" required>
+                        <label class="form-check-label" for="inlineRadio2">Aluguel</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
                     <p>Tipo de Imóvel</p>
                     <select class="form-control form-select" aria-label="Default select example" name="tipo_imovel" required>
-                        <option selected>Selecione um opção</option>
-                        <option value="apartamento">Apartamento</option>
-                        <option value="casa">Casa</option>
-                        <option value="duplex">Duplex</option>
-                        <option value="exemplo">Exemplo</option>
+                        <option value="1">Apartamento</option>
+                        <option value="2">Casa</option>
+                        <option value="3">Duplex</option>
+                        <option value="4">Exemplo</option>
                     </select>
                 </div>
                 <div class="col">
                     <p>Categoria</p>
-                    <select class="form-control form-select" aria-label="Default select example" name="categoria" required>
-                        <option selected>Selecione um opção</option>
-                        <option value="padrao">Padrão</option>
-                        <option value="exemplo">Exemplo</option>
+                    <select class="form-control form-select" aria-label="Default select example" name="categoria">
+                        <option value="1">Padrão</option>
+                        <option value="2">Exemplo</option>
                         <option value="3">Exemplo</option>
                     </select>
                 </div>
                 <div class="col">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" required>
                         <label class="form-check-label" for="inlineRadio1">Venda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" required>
                         <label class="form-check-label" for="inlineRadio2">Aluguel</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="3" required>
                         <label class="form-check-label" for="inlineRadio2">Venda e Aluguel</label>
                     </div>
                 </div>
@@ -55,7 +66,6 @@
                 <div class="col">
                     <p>Quartos</p>
                     <select class="form-control form-select" aria-label="Default select example" name="quartos" required>
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -67,7 +77,6 @@
                 <div class="col">
                     <p>Suítes</p>
                     <select class="form-control form-select" aria-label="Default select example" name="suites" required>
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -79,7 +88,6 @@
                 <div class="col">
                     <p>Banheiros</p>
                     <select class="form-control form-select" aria-label="Default select example" name="banheiros" required>
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -91,7 +99,6 @@
                 <div class="col">
                     <p>Vagas</p>
                     <select class="form-control form-select" aria-label="Default select example" name="vagas" required>
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -111,7 +118,6 @@
                 <div class="col">
                     <p>Andar</p>
                     <select class="form-control form-select" aria-label="Default select example" name="andar" required>
-                        <option selected>Selecione um opção</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
@@ -168,7 +174,6 @@
                 <div class="col">
                     <p>Número de Unidades por Andar</p>
                     <select class="form-control form-select" aria-label="Default select example" name="nmr_unidades">
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -180,7 +185,6 @@
                 <div class="col">
                     <p>Número de torres</p>
                     <select class="form-control form-select" aria-label="Default select example" name="nmr_torres">
-                        <option selected>Selecione um opção</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -196,8 +200,8 @@
             <h3 style="margin: 40px 0;">Código, Título e descrição do anúncio</h3>
             <div class="row md-4">
                 <div class="col-2">
-                    <p>Código do Anúncio</p>
-                    <input type="text" id="TextInput" class="form-control" name="codigo" placeholder="" required>
+                    <p>Código do Anúncio (interno)</p>
+                    <input type="text" id="TextInput" class="form-control" name="codigo_zap" placeholder="" required>
                 </div>
                 <div class="col">
                     <p>Título da Descrição</p>
@@ -215,43 +219,43 @@
                     <h3 style="margin-top: 40px;">Características do imóvel (Opcional)</h3>
                     <p><b>Diferenciais</b></p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="ac_animais">
                         <label class="form-check-label" for="flexCheckDefault">
                             Aceita Animais
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="ar_condicionado">
                         <label class="form-check-label" for="flexCheckDefault">
                             Ar-condicionado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="closet">
                         <label class="form-check-label" for="flexCheckDefault">
                             Closet
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="cozinha_ame">
                         <label class="form-check-label" for="flexCheckDefault">
                             Cozinha Americana
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="lareira">
                         <label class="form-check-label" for="flexCheckDefault">
                             Lareira
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="mobiliado">
                         <label class="form-check-label" for="flexCheckDefault">
                             Mobiliado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="varanda_gourmet">
                         <label class="form-check-label" for="flexCheckDefault">
                             Varanda Gourmet
                         </label>
@@ -263,73 +267,73 @@
                         <div class="col">
                             <p><b>Lazer e Esporte</b></p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="academia">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="academia">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Academia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="churrasqueira">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="churrasqueira">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Churrasqueira
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="cinema">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="cinema">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Cinema
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="espaco_gourmet">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="espaco_gourmet">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Espaço Gourmet
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="jardim">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="jardim">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Jardim
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="piscina">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="piscina">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Piscina
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="playground">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="playground">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     PlayGround
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="squash">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="squash">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra de Squash
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="tenis">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="tenis">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra de Tênis
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="poliesportiva">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="poliesportiva">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra Poliesportiva
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="festas">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="festas">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Salão de Festas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="jogos">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="jogos">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Salão de Jogos
                                 </label>
@@ -339,43 +343,43 @@
                         <div class="col">
                             <p><b>Comodidades e Serviços</b></p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="deficientes">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="deficientes">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Acesso para deficientes
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="bicicletario">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="bicicletario">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Bicicletários
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="coworking">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="coworking">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Coworking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="elevador">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="elevador">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Elevador
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="lavanderia">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="lavanderia">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Lavanderia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="sauna">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="sauna">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Sauna
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="spa">
+                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="spa">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Spa
                                 </label>
@@ -384,11 +388,75 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <input type="file" name="imagens[]" id="file-input" multiple>
+                <div class="row" id="preview" style="border: 1px solid #000; padding: 50px; margin-top: 10px;">
+                </div>
+            </div>
         </div>
         <div class="btn-submit">
             <input type="submit" value="Cadastrar imóvel">
         </div>
     </form>
 </body>
+
+<script>
+    const uploadForm = document.querySelector('#form_cadastro');
+    const fileInput = document.querySelector('#file-input');
+    const previewDiv = document.querySelector('#preview');
+    let previews = [];
+
+    fileInput.addEventListener('change', () => {
+        // Percorra todos os arquivos selecionados pelo usuário
+        for (const file of fileInput.files) {
+            // Verifique se o arquivo já foi carregado antes
+            if (!previews.some(preview => preview.name === file.name)) {
+                // Crie um objeto FileReader para ler o conteúdo do arquivo
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // Crie um elemento de imagem para exibir a prévia do arquivo
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.style.width = '300px';
+                    img.style.height = '200px';
+                    img.style.margin = '0 0 40px 0';
+                    const div = document.createElement('div');
+                    div.classList.add("col")
+                    div.appendChild(img);
+                    previewDiv.appendChild(div);
+
+                    // Adicione a prévia do arquivo à matriz de prévias
+                    previews.push({
+                        name: file.name,
+                        url: reader.result
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    // uploadForm.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+
+    //     const newFileInput = document.createElement('input');
+    //     newFileInput.type = 'file';
+    //     newFileInput.name = 'file[]';
+    //     fileInputs.appendChild(newFileInput);
+
+    //     const formData = new FormData(uploadForm);
+
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open('POST', '/cadastro_sql.php');
+    //     xhr.onload = () => {
+    //         if (xhr.status === 200) {
+    //             console.log('Arquivos carregados com sucesso!');
+    //         } else {
+    //             console.log(`Erro ao carregar os arquivos: ${xhr.status}`);
+    //         }
+    //     };
+    //     xhr.send(formData, uploadForm);
+    // });
+</script>
 
 </html>
