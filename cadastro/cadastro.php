@@ -26,6 +26,17 @@
                         <label class="form-check-label" for="inlineRadio2">Aluguel</label>
                     </div>
                 </div>
+                <div class="col">
+                    <p>Anunciar no Zap ?</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio1" value="1" required>
+                        <label class="form-check-label" for="inlineRadio1">Venda</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio2" value="2" required>
+                        <label class="form-check-label" for="inlineRadio2">Aluguel</label>
+                    </div>
+                </div>
             </div>
             <div class="row mb-4">
                 <div class="col">

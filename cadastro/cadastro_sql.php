@@ -3,6 +3,7 @@
 define('ROOT_PATH', dirname(__FILE__) . "/");
 include_once "../includes/connection.php";
 
+$zap = $_REQUEST['zap'];
 $codigo_interno = $_REQUEST['codigo_interno'];
 $tipo_imovel = $_REQUEST['tipo_imovel'];
 $tipo_negocio = $_REQUEST['tipo_negocio'];
