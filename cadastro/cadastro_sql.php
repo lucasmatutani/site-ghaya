@@ -68,6 +68,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
         if ($file_error == UPLOAD_ERR_OK) {
             $target_dir = "uploads/";
             $target_file = $target_dir . basename($codigo_interno);
+            echo basename($codigo_interno);
 
             // Define o caminho onde o arquivo será salvo
             // $caminho = ROOT_PATH . "img/" . $codigo_interno;
