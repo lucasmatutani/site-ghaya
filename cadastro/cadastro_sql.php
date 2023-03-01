@@ -69,7 +69,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
 
             // Define o caminho onde o arquivo será salvo
             // $caminho = ROOT_PATH . "img/" . $codigo_interno;
-            $caminho = "uploads/" . basename($codigo_interno);
+            $caminho = "uploads/" . $codigo_interno;
             if (!file_exists($caminho)) {
                 mkdir($caminho, 0777, true);
             }
