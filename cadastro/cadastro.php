@@ -450,7 +450,7 @@
     });
 
     $(document).ready(function() {
-        $("#cep").mask("99.999-999");
+        $("#cep").mask("99999-999");
 
         $("#cep").blur(function() {
             var cep = $(this).val().replace(/\D/g, '');
