@@ -1,8 +1,8 @@
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbname = "site_ghaya";
+$hostname = "auth-db881.hstgr.io";
+$username = "u680727787_matutani";
+$password = "tD92&41WR9$#";
+$dbname = "u680727787_ghaya";
 
 // Create connection
 $conn = mysqli_connect($hostname, $username, $password, $dbname);
