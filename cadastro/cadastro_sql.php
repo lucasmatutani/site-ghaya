@@ -69,14 +69,14 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
         if ($file_error == UPLOAD_ERR_OK) {
 
             // Define o caminho onde o arquivo será salvo
-            $caminho = ROOT_PATH . $file_name;
+            $caminho = ROOT_PATH . "img/" . $codigo_zap;
             if (!file_exists($caminho)) {
                 mkdir($caminho, 0777, true);
             }
             echo "CAMINHO " . $caminho . "<br>";
             echo "TEMP" . $file_error;
             // Move o arquivo para o diretório de uploads
-            copy($file_tmp, "../assets/img");
+            copy($file_tmp, $caminho);
         } else {
             echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
         }
