@@ -73,6 +73,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
             if (!file_exists($caminho)) {
                 mkdir($caminho, 0777, true);
             }
+            echo $caminho;
             // Move o arquivo para o diretório de uploads
             copy($file_tmp, $caminho . basename($file_tmp));
         } else {
