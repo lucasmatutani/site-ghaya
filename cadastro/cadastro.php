@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -18,23 +19,23 @@
                 <div class="col">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="1" required>
-                        <label class="form-check-label" for="inlineRadio1">Venda</label>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="0" required checked>
+                        <label class="form-check-label" for="inlineRadio1">Residencial</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio2" value="2" required>
-                        <label class="form-check-label" for="inlineRadio2">Aluguel</label>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio2" value="1" required>
+                        <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
                 <div class="col">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="zap" id="inlineRadio1" value="1" required>
-                        <label class="form-check-label" for="inlineRadio1">Venda</label>
+                        <label class="form-check-label" for="inlineRadio1">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio2" value="2" required>
-                        <label class="form-check-label" for="inlineRadio2">Aluguel</label>
+                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio2" value="0" required>
+                        <label class="form-check-label" for="inlineRadio2">Não</label>
                     </div>
                 </div>
             </div>
@@ -59,15 +60,15 @@
                 <div class="col">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" required>
+                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio1" value="For Sale" required>
                         <label class="form-check-label" for="inlineRadio1">Venda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" required>
+                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio2" value="For Rent" required>
                         <label class="form-check-label" for="inlineRadio2">Aluguel</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="3" required>
+                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio2" value="Sale/Rent" required>
                         <label class="form-check-label" for="inlineRadio2">Venda e Aluguel</label>
                     </div>
                 </div>
@@ -139,27 +140,27 @@
             <div class="row md-4 input-group" style="margin-top: 20px;">
                 <div class="col">
                     <p>CEP</p>
-                    <input type="text" id="TextInput" class="form-control" name="cep" placeholder="" required>
+                    <input type="text" id="cep" class="form-control" name="cep" placeholder="" required>
                 </div>
 
                 <div class="col">
                     <p>Cidade</p>
-                    <input type="text" id="TextInput" class="form-control" name="cidade" placeholder="" required>
+                    <input type="text" id="cidade" class="form-control" name="cidade" placeholder="" required>
                 </div>
                 <div class="col-4">
                     <p>Bairro</p>
-                    <input type="text" id="TextInput" class="form-control" name="bairro" placeholder="" required>
+                    <input type="text" id="bairro" class="form-control" name="bairro" placeholder="" required>
                 </div>
                 <div class="col-1">
                     <p>UF</p>
-                    <input type="text" id="TextInput" class="form-control" name="uf" placeholder="" required>
+                    <input type="text" id="estado" class="form-control" name="uf" placeholder="" required>
                 </div>
             </div>
 
             <div class="row md-4 input-group" style="margin-top: 20px;">
                 <div class="col">
                     <p>Endereço</p>
-                    <input type="text" id="TextInput" class="form-control" name="endereco" placeholder="" required>
+                    <input type="text" id="logradouro" class="form-control" name="endereco" placeholder="" required>
                 </div>
                 <div class="col-1">
                     <p>Número</p>
@@ -447,26 +448,80 @@
         }
     });
 
+    $(document).ready(function() {
+        $("#cep").blur(function() {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep != "") {
+                var url = "https://viacep.com.br/ws/" + cep + "/json/";
+                $.getJSON(url, function(data) {
+                    if (data.logradouro == undefined) {
+                        alert("CEP inválido.");
+                    } else {
+                        $("#logradouro").val(data.logradouro);
+                        $("#bairro").val(data.bairro);
+                        $("#cidade").val(data.localidade);
+                        $("#estado").val(data.uf);
+                    }
+                });
+            }
+        });
+    });
     // uploadForm.addEventListener('submit', (event) => {
     //     event.preventDefault();
 
-    //     const newFileInput = document.createElement('input');
-    //     newFileInput.type = 'file';
-    //     newFileInput.name = 'file[]';
-    //     fileInputs.appendChild(newFileInput);
-
     //     const formData = new FormData(uploadForm);
 
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.open('POST', '/cadastro_sql.php');
-    //     xhr.onload = () => {
-    //         if (xhr.status === 200) {
-    //             console.log('Arquivos carregados com sucesso!');
-    //         } else {
-    //             console.log(`Erro ao carregar os arquivos: ${xhr.status}`);
-    //         }
-    //     };
-    //     xhr.send(formData, uploadForm);
+    //     // Crie um objeto XML
+    //     const xml = `
+    //         <xml version="1.0" encoding="UTF-8">
+    //         <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
+    //             <Header>
+    //                 <Provider>Desenvolvedor do Feed</Provider>
+    //                 <Email>lucasmatutani@gmail.com</Email>
+    //                 <ContactName>Lucas Matutani</ContactName>
+    //                 <PublishDate></PublishDate>
+    //                 <Telephone>11-948610869</Telephone>
+    //             </Header>
+    //             <Listings>
+    //                 <Listing>
+    //                     <ListingID>${formData.get('zap')}</ListingID>
+    //                     <Title><![CDATA[${formData.get('titulo')}]]></Title>
+    //                     <TransactionType>${formData.get('negocio')}</TransactionType>
+    //                     <Location displayAddress="All">
+    //                         <Country abbreviation="BR">Brasil</Country>
+    //                         <State abbreviation="SP">Sao Paulo</State>
+    //                         <City>São Paulo</City>
+    //                         <Zone>Zona Sul</Zone>
+    //                         <Neighborhood>Consolação</Neighborhood>
+    //                         <Address>Rua Bela Cintra</Address>
+    //                         <StreetNumber>539</StreetNumber>
+    //                         <Complement>APT 12</Complement>
+    //                         <PostalCode>01415-003</PostalCode>
+    //                         <Latitude>-23.5531131</Latitude>
+    //                         <Longitude>-46.659864</Longitude>
+    //                     </Location>
+    //                 </Listing>
+    //             </Listings>
+    //         </ListingDataFeed>
+
+    //         <root>
+    //             <nome>${formData.get('nome')}</nome>
+    //             <email>${formData.get('email')}</email>
+    //             <mensagem>${formData.get('mensagem')}</mensagem>
+    //         </root>
+    //     `;
+
+    //     const url = 'https://example.com/submit-xml'; // URL de envio
+    //     const response = fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
+    //         },
+    //         body: xml
+    //     });
+
+    //     const result = response.text();
+    //     console.log(result); // Exibe a resposta do servidor
     // });
 </script>
 
