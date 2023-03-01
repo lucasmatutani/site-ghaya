@@ -140,7 +140,7 @@
             <div class="row md-4 input-group" style="margin-top: 20px;">
                 <div class="col">
                     <p>CEP</p>
-                    <input type="text" id="cep" class="form-control" name="cep" placeholder="" required maxlength="8">
+                    <input type="text" id="cep" class="form-control" name="cep" placeholder="" required maxlength="9">
                 </div>
 
                 <div class="col">
