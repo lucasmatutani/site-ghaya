@@ -449,6 +449,7 @@
     });
 
     $(document).ready(function() {
+        $("#cep").mask("00000-000");
         $("#cep").blur(function() {
             var cep = $(this).val().replace(/\D/g, '');
             if (cep != "") {
