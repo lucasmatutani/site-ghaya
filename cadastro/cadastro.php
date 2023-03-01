@@ -449,8 +449,8 @@
     });
 
     $(document).ready(function() {
+        $("#cep").mask("00000-000");
         $("#cep").blur(function() {
-            mask("00000-000");
             var cep = $(this).val().replace(/\D/g, '');
             if (cep != "") {
                 var url = "https://viacep.com.br/ws/" + cep + "/json/";
