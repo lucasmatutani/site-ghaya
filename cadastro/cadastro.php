@@ -201,7 +201,7 @@
             <div class="row md-4">
                 <div class="col-2">
                     <p>Código do Anúncio (interno)</p>
-                    <input type="text" id="TextInput" class="form-control" name="codigo_zap" placeholder="" required>
+                    <input type="text" id="TextInput" class="form-control" name="codigo_interno" placeholder="" required>
                 </div>
                 <div class="col">
                     <p>Título da Descrição</p>
