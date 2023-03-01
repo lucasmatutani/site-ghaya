@@ -57,7 +57,6 @@ $sauna = @$_POST['sauna'];
 $spa = @$_POST['spa'];
 
 if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
-    echo "ENTROUU!!!";
     for ($i = 0; $i < count($_FILES['imagens']['name']); $i++) {
         $file_name = $_FILES['imagens']['name'][$i];
         $file_tmp = $_FILES['imagens']['tmp_name'][$i];
@@ -74,6 +73,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
                 mkdir($caminho, 0777, true);
             }
             // Move o arquivo para o diretório de uploads
+            echo $file_tmp;
             move_uploaded_file($file_tmp, $caminho);
         } else {
             echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
