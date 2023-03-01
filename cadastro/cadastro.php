@@ -17,7 +17,7 @@
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-4">
-                <div class="col-2">
+                <div class="col-3">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="0" required checked>
