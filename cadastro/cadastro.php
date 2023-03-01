@@ -17,7 +17,7 @@
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-4">
-                <div class="col">
+                <div class="col-2">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="0" required checked>
@@ -28,7 +28,7 @@
                         <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="zap" id="inlineRadio1" value="1" required>
