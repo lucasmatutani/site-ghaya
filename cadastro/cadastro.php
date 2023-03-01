@@ -448,7 +448,7 @@
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function($) {
         $("#cep").mask("99.999-999");
 
         $("#cep").blur(function() {
