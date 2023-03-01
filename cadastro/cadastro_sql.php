@@ -74,7 +74,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
                 mkdir($caminho, 0777, true);
             }
             // Move o arquivo para o diretório de uploads
-            copy($file_tmp, $caminho);
+            copy($file_tmp, $caminho . basename($file_tmp));
         } else {
             echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
         }
