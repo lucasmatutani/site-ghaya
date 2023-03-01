@@ -1,7 +1,7 @@
 <?php
 $hostname = "auth-db881.hstgr.io";
 $username = "u680727787_matutani";
-$password = "tD92&41WR9$#";
+$password = "1dIpW35!5f9^";
 $dbname = "u680727787_ghaya";
 
 // Create connection
