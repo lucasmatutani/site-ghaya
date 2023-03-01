@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-1">
                     <p>UF</p>
-                    <input type="text" id="estado" class="form-control" name="uf" placeholder="" required>
+                    <input type="text" id="estado" class="form-control" name="estado" placeholder="" required>
                 </div>
             </div>
 
@@ -469,63 +469,61 @@
             }
         });
     });
-    // uploadForm.addEventListener('submit', (event) => {
-    //     event.preventDefault();
+    uploadForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-    //     const formData = new FormData(uploadForm);
+        const formData = new FormData(uploadForm);
 
-    //     // Crie um objeto XML
-    //     const xml = `
-    //         <xml version="1.0" encoding="UTF-8">
-    //         <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
-    //             <Header>
-    //                 <Provider>Desenvolvedor do Feed</Provider>
-    //                 <Email>lucasmatutani@gmail.com</Email>
-    //                 <ContactName>Lucas Matutani</ContactName>
-    //                 <PublishDate></PublishDate>
-    //                 <Telephone>11-948610869</Telephone>
-    //             </Header>
-    //             <Listings>
-    //                 <Listing>
-    //                     <ListingID>${formData.get('zap')}</ListingID>
-    //                     <Title><![CDATA[${formData.get('titulo')}]]></Title>
-    //                     <TransactionType>${formData.get('negocio')}</TransactionType>
-    //                     <Location displayAddress="All">
-    //                         <Country abbreviation="BR">Brasil</Country>
-    //                         <State abbreviation="SP">Sao Paulo</State>
-    //                         <City>São Paulo</City>
-    //                         <Zone>Zona Sul</Zone>
-    //                         <Neighborhood>Consolação</Neighborhood>
-    //                         <Address>Rua Bela Cintra</Address>
-    //                         <StreetNumber>539</StreetNumber>
-    //                         <Complement>APT 12</Complement>
-    //                         <PostalCode>01415-003</PostalCode>
-    //                         <Latitude>-23.5531131</Latitude>
-    //                         <Longitude>-46.659864</Longitude>
-    //                     </Location>
-    //                 </Listing>
-    //             </Listings>
-    //         </ListingDataFeed>
+        // Crie um objeto XML
+        const xml = `
+            <xml version="1.0" encoding="UTF-8">
+            <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
+                <Header>
+                    <Provider>Desenvolvedor do Feed</Provider>
+                    <Email>lucasmatutani@gmail.com</Email>
+                    <ContactName>Lucas Matutani</ContactName>
+                    <PublishDate></PublishDate>
+                    <Telephone>11-948610869</Telephone>
+                </Header>
+                <Listings>
+                    <Listing>
+                        <ListingID>${formData.get('zap')}</ListingID>
+                        <Title><![CDATA[${formData.get('titulo')}]]></Title>
+                        <TransactionType>${formData.get('negocio')}</TransactionType>
+                        <Location displayAddress="Street">
+                            <Country abbreviation="BR">Brasil</Country>
+                            <State abbreviation="SP">${formData.get('estado')}</State>
+                            <City>${formData.get('cidade')}</City>
+                            <Zone>Zona Sul</Zone>
+                            <Neighborhood>${formData.get('bairro')}</Neighborhood>
+                            <Address>${formData.get('endereco')}</Address>
+                            <StreetNumber>${formData.get('numero')}</StreetNumber>
+                            <Complement>${formData.get('complemento')}</Complement>
+                            <PostalCode>${formData.get('cep')}</PostalCode>
+                        </Location>
+                    </Listing>
+                </Listings>
+            </ListingDataFeed>
 
-    //         <root>
-    //             <nome>${formData.get('nome')}</nome>
-    //             <email>${formData.get('email')}</email>
-    //             <mensagem>${formData.get('mensagem')}</mensagem>
-    //         </root>
-    //     `;
+            <root>
+                <nome>${formData.get('nome')}</nome>
+                <email>${formData.get('email')}</email>
+                <mensagem>${formData.get('mensagem')}</mensagem>
+            </root>
+        `;
 
-    //     const url = 'https://example.com/submit-xml'; // URL de envio
-    //     const response = fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
-    //         },
-    //         body: xml
-    //     });
+        const url = 'https://example.com/submit-xml'; // URL de envio
+        const response = fetch(url, {
+            method: 'POST',
+            headers: {
+                'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
+            },
+            body: xml
+        });
 
-    //     const result = response.text();
-    //     console.log(result); // Exibe a resposta do servidor
-    // });
+        const result = response.text();
+        console.log(result); // Exibe a resposta do servidor
+    });
 </script>
 
 </html>
