@@ -66,17 +66,15 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
 
         // Verifica se o arquivo foi enviado com sucesso
         if ($file_error == UPLOAD_ERR_OK) {
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($codigo_interno);
-            echo "BASENAME :::::" . basename($codigo_interno);
 
             // Define o caminho onde o arquivo será salvo
             // $caminho = ROOT_PATH . "img/" . $codigo_interno;
-            if (!file_exists($target_file)) {
-                mkdir($target_file, 0777, true);
+            $caminho = "uploads/" . basename($codigo_interno);
+            if (!file_exists($caminho)) {
+                mkdir($caminho, 0777, true);
             }
             // Move o arquivo para o diretório de uploads
-            move_uploaded_file($file_tmp, $target_file);
+            move_uploaded_file($file_tmp, $caminho);
         } else {
             echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
         }
