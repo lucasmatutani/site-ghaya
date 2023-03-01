@@ -66,7 +66,7 @@ if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
 
         // Verifica se o arquivo foi enviado com sucesso
         if ($file_error == UPLOAD_ERR_OK) {
-            $target_dir = "..uploads/";
+            $target_dir = "uploads/";
             $target_file = $target_dir . basename($file_name);
 
             // Define o caminho onde o arquivo será salvo
