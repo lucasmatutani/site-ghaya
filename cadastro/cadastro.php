@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <p style="margin: 0 0 1rem 0;">Anúncio</p>
+                    <p style="margin: 0 0 3px 0;">Anúncio</p>
                     <select class="form-control form-select-sm" aria-label="Default select example" name="tipo_anuncio" required>
                         <option value="1">STANDARD</option>
                         <option value="2">PREMIUM</option>
