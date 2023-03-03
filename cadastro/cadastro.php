@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    <script src="jquery.maskMoney.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" type="text/javascript"></script>
     <title>Cadastro</title>
 </head>
 
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="row mb-4">
-                <div class="col">
+                <div class="col-2">
                     <p>Tipo de Imóvel</p>
                     <select class="form-control form-select" aria-label="Default select example" name="tipo_imovel" required>
                         <option value="1">Apartamento</option>
@@ -59,11 +59,15 @@
                         <option value="4">Exemplo</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <p>Preço</p>
                     <input type="text" id="preco" class="form-control" placeholder="" name="preco" required>
                 </div>
-                <div class="col">
+                <div class="col-1">
+                    <p>Iptu</p>
+                    <input type="text" id="iptu" class="form-control" placeholder="" name="iptu" required>
+                </div>
+                <div class="col-2">
                     <p>Categoria</p>
                     <select class="form-control form-select" aria-label="Default select example" name="categoria">
                         <option value="1">Padrão</option>
@@ -471,27 +475,36 @@
             decimal: ',',
             affixesStay: true
         });
-        $("#cep").blur(function() {
-            var cep = $(this).val().replace(/\D/g, '');
-            if (cep != "") {
-                var url = "https://viacep.com.br/ws/" + cep + "/json/";
-                $.getJSON(url, function(data) {
-                    if (data.logradouro == undefined) {
-                        alert("CEP inválido.");
-                    } else {
-                        $("#logradouro").val(data.logradouro);
-                        $("#bairro").val(data.bairro);
-                        $("#cidade").val(data.localidade);
-                        $("#estado").val(data.uf);
-                    }
-                });
-            }
+        $('#iptu').maskMoney({
+            prefix: 'R$ ',
+            allowNegative: true,
+            thousands: '.',
+            decimal: ',',
+            affixesStay: true
         });
+    })
+    $("#cep").blur(function() {
+        var cep = $(this).val().replace(/\D/g, '');
+        if (cep != "") {
+            var url = "https://viacep.com.br/ws/" + cep + "/json/";
+            $.getJSON(url, function(data) {
+                if (data.logradouro == undefined) {
+                    alert("CEP inválido.");
+                } else {
+                    $("#logradouro").val(data.logradouro);
+                    $("#bairro").val(data.bairro);
+                    $("#cidade").val(data.localidade);
+                    $("#estado").val(data.uf);
+                }
+            });
+        }
     });
     uploadForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         const formData = new FormData(uploadForm);
+        var iptu = split(",", formData.get('iptu'));
+        console.log(iptu);
 
         // Crie um objeto XML
         const xml = `
@@ -539,6 +552,7 @@
                         </Location>
                         <Details>
                             <ListPrice currency="BRL">${formData.get('cep')}</ListPrice>
+
                         </Details>
                     </Listing>
                 </Listings>
