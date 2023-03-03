@@ -28,7 +28,7 @@
                         <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="zap" id="inlineRadio1" value="1" required>
