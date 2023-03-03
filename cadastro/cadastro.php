@@ -16,7 +16,7 @@
     <form action="cadastro_sql.php" method="POST" id="form-cadastro" enctype="multipart/form-data">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
-            <div class="row mb-4">
+            <div class="row mb-2">
                 <div class="col-3">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
@@ -39,7 +39,7 @@
                         <label class="form-check-label" for="inlineRadio2">Não</label>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <p style="margin: 0 0 8px 0;">Anúncio</p>
                     <select class="form-control form-select" aria-label="Default select example" name="tipo_imovel" required>
                         <option value="1">STANDARD</option>
