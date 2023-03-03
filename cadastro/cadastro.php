@@ -28,6 +28,10 @@
                         <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
+                <div class="col">
+                    <p>Preço</p>
+                    <input type="text" id="TextInput" class="form-control" placeholder="" name="preco" required>
+                </div>
                 <div class="col-2">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
@@ -40,8 +44,8 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <p style="margin: 0 0 8px 0;">Anúncio</p>
-                    <select class="form-control form-select" aria-label="Default select example" name="tipo_imovel" required>
+                    <p style="margin: 0 0 8px 0;">Tipo Anúncio</p>
+                    <select class="form-control form-select" aria-label="Default select example" name="tipo_anuncio" required>
                         <option value="1">STANDARD</option>
                         <option value="2">PREMIUM</option>
                         <option value="3">SUPER_PREMIUM</option>
@@ -498,6 +502,7 @@
                         <ListingID>${formData.get('zap')}</ListingID>
                         <Title><![CDATA[${formData.get('titulo')}]]></Title>
                         <TransactionType>${formData.get('negocio')}</TransactionType>
+                        <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>
                         <Location displayAddress="Street">
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">${formData.get('estado')}</State>
@@ -525,7 +530,9 @@
                                 </Location>
                             </ContactInfo>
                         </Location>
-                    <PublicationType>STANDARD</PublicationType>
+                        <Details>
+                            <ListPrice currency="BRL">${formData.get('cep')}</ListPrice>
+                        </Details>
                     </Listing>
                 </Listings>
             </ListingDataFeed>
