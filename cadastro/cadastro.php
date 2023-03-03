@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="jquery.maskMoney.min.js" type="text/javascript"></script>
     <title>Cadastro</title>
 </head>
 
@@ -60,7 +61,7 @@
                 </div>
                 <div class="col">
                     <p>Preço</p>
-                    <input type="text" id="TextInput" class="form-control" placeholder="" name="preco" required>
+                    <input type="text" id="preco" class="form-control" placeholder="" name="preco" required>
                 </div>
                 <div class="col">
                     <p>Categoria</p>
@@ -463,7 +464,13 @@
 
     $(document).ready(function() {
         $("#cep").mask("99999-999");
-
+        $('#preco').maskMoney({
+            prefix: 'R$ ',
+            allowNegative: true,
+            thousands: '.',
+            decimal: ',',
+            affixesStay: true
+        });
         $("#cep").blur(function() {
             var cep = $(this).val().replace(/\D/g, '');
             if (cep != "") {
