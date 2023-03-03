@@ -28,10 +28,6 @@
                         <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
-                <div class="col">
-                    <p>Preço</p>
-                    <input type="text" id="TextInput" class="form-control" placeholder="" name="preco" required>
-                </div>
                 <div class="col-2">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
@@ -61,6 +57,10 @@
                         <option value="3">Duplex</option>
                         <option value="4">Exemplo</option>
                     </select>
+                </div>
+                <div class="col">
+                    <p>Preço</p>
+                    <input type="text" id="TextInput" class="form-control" placeholder="" name="preco" required>
                 </div>
                 <div class="col">
                     <p>Categoria</p>
