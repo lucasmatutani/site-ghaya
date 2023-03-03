@@ -504,7 +504,6 @@
 
         const formData = new FormData(uploadForm);
         var iptu = split(",", formData.get('iptu'));
-        console.log(iptu);
 
         // Crie um objeto XML
         const xml = `
@@ -552,7 +551,7 @@
                         </Location>
                         <Details>
                             <ListPrice currency="BRL">${formData.get('cep')}</ListPrice>
-
+                            <YearlyTax currency="BRL">${iptu[0]}</YearlyTax>
                         </Details>
                     </Listing>
                 </Listings>
