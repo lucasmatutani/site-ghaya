@@ -39,6 +39,14 @@
                         <label class="form-check-label" for="inlineRadio2">Não</label>
                     </div>
                 </div>
+                <div class="col-4">
+                    <p>Anúncio</p>
+                    <select class="form-control form-select" aria-label="Default select example" name="tipo_anuncio" required>
+                        <option value="1">STANDARD</option>
+                        <option value="2">PREMIUM</option>
+                        <option value="3">SUPER_PREMIUM</option>
+                    </select>
+                </div>
             </div>
             <div class="row mb-4">
                 <div class="col">
@@ -493,14 +501,31 @@
                         <Location displayAddress="Street">
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">${formData.get('estado')}</State>
-                            <City>${formData.get('cidade')}</City>
+                            <City><![CDATA[${formData.get('cidade')}]]></City>
                             <Zone>Zona Sul</Zone>
-                            <Neighborhood>${formData.get('bairro')}</Neighborhood>
-                            <Address>${formData.get('endereco')}</Address>
+                            <Neighborhood><![CDATA[${formData.get('bairro')}]]></Neighborhood>
+                            <Address><![CDATA[${formData.get('endereco')}]]></Address>
                             <StreetNumber>${formData.get('numero')}</StreetNumber>
                             <Complement>${formData.get('complemento')}</Complement>
                             <PostalCode>${formData.get('cep')}</PostalCode>
+                            <Media></Media>
+                            <ContactInfo>
+                                <Name>Ghaya Imóveis</Name>
+                                <Email>contato@ghayaimoveis.com.br</Email>
+                                <Website>http://www.ghayaimoveis.com.br</Website>
+                                <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                                <Telephone>(11) 5055-5598</Telephone>
+                                <Location>
+                                    <Country abbreviation="BR">Brasil</Country>
+                                    <State abbreviation="SP">Sao Paulo</State>
+                                    <City>São Paulo</City>
+                                    <Neighborhood>Vila Buarque</Neighborhood>
+                                    <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                                    <PostalCode>01221-020</PostalCode>
+                                </Location>
+                            </ContactInfo>
                         </Location>
+                    <PublicationType>STANDARD</PublicationType>
                     </Listing>
                 </Listings>
             </ListingDataFeed>
