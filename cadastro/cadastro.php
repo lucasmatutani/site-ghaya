@@ -437,6 +437,8 @@
     let previews = [];
 
     fileInput.addEventListener('change', () => {
+        iptu = Math.round(document.getElementById("iptu").value.replace("R$", "").replace(".", "").replace(",", "."));
+        console.log(num);
         // Percorra todos os arquivos selecionados pelo usuário
         for (const file of fileInput.files) {
             // Verifique se o arquivo já foi carregado antes
@@ -503,7 +505,10 @@
         event.preventDefault();
 
         const formData = new FormData(uploadForm);
-        var iptu = split(",", formData.get('iptu'));
+        var iptu = Math.round(formData.get('preco').replace("R$", "").replace(".", "").replace(",", "."));
+        var preco = Math.round(formData.get('iptu').replace("R$", "").replace(".", "").replace(",", "."));
+        var areaUtil = Math.roud(formData.get('area_util').replace(",", "."));
+        var areaTerreno = Math.roud(formData.get('area_total').replace(",", "."));
 
         // Crie um objeto XML
         const xml = `
@@ -550,8 +555,11 @@
                             </ContactInfo>
                         </Location>
                         <Details>
-                            <ListPrice currency="BRL">${formData.get('cep')}</ListPrice>
+                            <ListPrice currency="BRL">${preco}</ListPrice>
                             <YearlyTax currency="BRL">${iptu[0]}</YearlyTax>
+                            <Description><![CDATA[${formData.get('descricao')}]]></Description>
+                            <LivingArea unit="square metres">${areaUtil}</LivingArea>
+                            <LotArea unit="square metres">${areaTerreno}</LotArea>
                         </Details>
                     </Listing>
                 </Listings>
