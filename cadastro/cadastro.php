@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form action="cadastro_sql.php" method="POST" id="form-cadastro" enctype="multipart/form-data">
+    <form action="cadastro_sql.php" method="POST" id="form_cadastro" enctype="multipart/form-data">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-2">
@@ -75,7 +75,7 @@
                         <option value="3">Exemplo</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="negocio" id="inlineRadio1" value="For Sale" required>
@@ -89,6 +89,10 @@
                         <input class="form-check-input" type="radio" name="negocio" id="inlineRadio2" value="Sale/Rent" required>
                         <label class="form-check-label" for="inlineRadio2">Venda e Aluguel</label>
                     </div>
+                </div>
+                <div class="col">
+                    <p>Valor Alguel mensal</p>
+                    <input type="text" id="valor_aluguel" class="form-control" placeholder="" name="valor_aluguel">
                 </div>
             </div>
 
@@ -116,14 +120,14 @@
                     </select>
                 </div>
                 <div class="col">
-                    <p>Banheiros</p>
+                    <p>Banheiro(s)</p>
                     <select class="form-control form-select" aria-label="Default select example" name="banheiros" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="3">4</option>
-                        <option value="3">5</option>
-                        <option value="3">6</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
                     </select>
                 </div>
                 <div class="col">
@@ -132,9 +136,9 @@
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="3">4</option>
-                        <option value="3">5</option>
-                        <option value="3">6</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
                     </select>
                 </div>
                 <div class="col">
@@ -419,7 +423,7 @@
                 </div>
             </div>
             <div class="row">
-                <input type="file" name="imagens[]" id="file-input" multiple>
+                <input type="file" name="imagens[]" id="file_input" multiple>
                 <div class="row" id="preview" style="border: 1px solid #000; padding: 50px; margin-top: 10px;">
                 </div>
             </div>
@@ -432,13 +436,12 @@
 
 <script>
     const uploadForm = document.querySelector('#form_cadastro');
-    const fileInput = document.querySelector('#file-input');
+    const fileInput = document.querySelector('#file_input');
     const previewDiv = document.querySelector('#preview');
     let previews = [];
 
     fileInput.addEventListener('change', () => {
         iptu = Math.round(document.getElementById("iptu").value.replace("R$", "").replace(".", "").replace(",", "."));
-        console.log(num);
         // Percorra todos os arquivos selecionados pelo usuário
         for (const file of fileInput.files) {
             // Verifique se o arquivo já foi carregado antes
@@ -484,6 +487,13 @@
             decimal: ',',
             affixesStay: true
         });
+        $('#valor_aluguel').maskMoney({
+            prefix: 'R$ ',
+            allowNegative: true,
+            thousands: '.',
+            decimal: ',',
+            affixesStay: true
+        });
     })
     $("#cep").blur(function() {
         var cep = $(this).val().replace(/\D/g, '');
@@ -505,16 +515,26 @@
         event.preventDefault();
 
         const formData = new FormData(uploadForm);
-        var iptu = Math.round(formData.get('preco').replace("R$", "").replace(".", "").replace(",", "."));
-        var preco = Math.round(formData.get('iptu').replace("R$", "").replace(".", "").replace(",", "."));
-        var areaUtil = Math.roud(formData.get('area_util').replace(",", "."));
-        var areaTerreno = Math.roud(formData.get('area_total').replace(",", "."));
+
+        var precoFormat = formData.get('preco').replace("R$", "").replace(".", "").replace(",", ".");
+        var preco = Math.round(precoFormat);
+
+        var iptuFormat = formData.get('iptu').replace("R$", "").replace(".", "").replace(",", ".");
+        var iptu = Math.round(iptuFormat);
+
+        var valorAluguelFormat = formData.get('valor_aluguel').replace("R$", "").replace(".", "").replace(",", ".");
+        var valorAluguel = Math.round(valorAluguelFormat);
+
+        // var areaUtilFormat = formData.get('area_util').replace(",", ".");
+        // var areaUtil = Math.roud(areaUtilFormat);
+
+        // var areaTerrenoFormat = formData.get('area_total').replace(",", ".");
+        // var areaTerreno = Math.roud(areaTerrenoFormat);
 
         // Crie um objeto XML
-        const xml = `
-            <xml version="1.0" encoding="UTF-8">
-            <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
-                <Header>
+        var xml = `<xml version="1.0" encoding="UTF-8">`;
+        xml += `<ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
+        xml += `<Header>
                     <Provider>Desenvolvedor do Feed</Provider>
                     <Email>lucasmatutani@gmail.com</Email>
                     <ContactName>Lucas Matutani</ContactName>
@@ -522,12 +542,12 @@
                     <Telephone>11-948610869</Telephone>
                 </Header>
                 <Listings>
-                    <Listing>
-                        <ListingID>${formData.get('zap')}</ListingID>
+                    <Listing>`;
+        xml += `<ListingID>${formData.get('zap')}</ListingID>
                         <Title><![CDATA[${formData.get('titulo')}]]></Title>
                         <TransactionType>${formData.get('negocio')}</TransactionType>
-                        <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>
-                        <Location displayAddress="Street">
+                        <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>`;
+        xml += `<Location displayAddress="Street">
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">${formData.get('estado')}</State>
                             <City><![CDATA[${formData.get('cidade')}]]></City>
@@ -553,36 +573,43 @@
                                     <PostalCode>01221-020</PostalCode>
                                 </Location>
                             </ContactInfo>
-                        </Location>
-                        <Details>
+                        </Location>`;
+        xml += `<Details>
                             <ListPrice currency="BRL">${preco}</ListPrice>
-                            <YearlyTax currency="BRL">${iptu[0]}</YearlyTax>
+                            <YearlyTax currency="BRL">${iptu}</YearlyTax>
                             <Description><![CDATA[${formData.get('descricao')}]]></Description>
-                            <LivingArea unit="square metres">${areaUtil}</LivingArea>
-                            <LotArea unit="square metres">${areaTerreno}</LotArea>
-                        </Details>
-                    </Listing>
+                            <LivingArea unit="square metres">${formData.get('area_util')}</LivingArea>
+                            <LotArea unit="square metres">${formData.get('area_total')}</LotArea>
+                            <PropertyAdministrationFee currency="BRL">${valorAluguel}</PropertyAdministrationFee>
+                            <Bathrooms>${formData.get('quartos')}</Bathrooms>
+                            <Garage>${formData.get('vagas')}</Garage>
+                            <Floors>${formData.get('nmr_andares')}</Floors>
+                            <UnitFloor>${formData.get('andar')}</UnitFloor>
+                            <Suites>${formData.get('suites')}</Suites>
+                            <YearBuilt>${formData.get('construcao')}</YearBuilt>
+                        </Details>`;
+        xml += `</Listing>
                 </Listings>
-            </ListingDataFeed>
-
-            <root>
+            </ListingDataFeed>`;
+        xml += `<root>
                 <nome>${formData.get('nome')}</nome>
-                <email>${formData.get('email')}</email>
+                <email>$formData.get('email')}</email>
                 <mensagem>${formData.get('mensagem')}</mensagem>
-            </root>
-        `;
+            </root>`;
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xml, "text/xml");
+        console.log(xmlDoc);
+        // const url = 'https://example.com/submit-xml'; // URL de envio
+        // const response = fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
+        //     },
+        //     body: xml
+        // });
 
-        const url = 'https://example.com/submit-xml'; // URL de envio
-        const response = fetch(url, {
-            method: 'POST',
-            headers: {
-                'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
-            },
-            body: xml
-        });
-
-        const result = response.text();
-        console.log(result); // Exibe a resposta do servidor
+        // const result = response.text();
+        // console.log(result); // Exibe a resposta do servidor
     });
 </script>
 
