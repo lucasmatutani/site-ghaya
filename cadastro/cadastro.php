@@ -21,11 +21,11 @@
                 <div class="col-2">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="0" required checked>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio1" value="Residential" required checked>
                         <label class="form-check-label" for="inlineRadio1">Residencial</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio2" value="1" required>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="inlineRadio2" value="Commercial" required>
                         <label class="form-check-label" for="inlineRadio2">Comercial</label>
                     </div>
                 </div>
@@ -48,10 +48,8 @@
                         <option value="3">SUPER_PREMIUM</option>
                     </select>
                 </div>
-            </div>
-            <div class="row mb-4">
                 <div class="col-2">
-                    <p>Tipo de Imóvel</p>
+                    <p style="margin: 0 0 8px 0;">Tipo de Imóvel</p>
                     <select class="form-control form-select" aria-label="Default select example" name="tipo_imovel" required>
                         <option value="1">Apartamento</option>
                         <option value="2">Casa</option>
@@ -59,6 +57,8 @@
                         <option value="4">Exemplo</option>
                     </select>
                 </div>
+            </div>
+            <div class="row mb-4">
                 <div class="col-2">
                     <p>Preço</p>
                     <input type="text" id="preco" class="form-control" placeholder="" name="preco" required>
@@ -66,6 +66,10 @@
                 <div class="col-1">
                     <p>Iptu</p>
                     <input type="text" id="iptu" class="form-control" placeholder="" name="iptu" required>
+                </div>
+                <div class="col-2">
+                    <p>Condomínio</p>
+                    <input type="text" id="preco" class="form-control" placeholder="" name="condominio" required>
                 </div>
                 <div class="col-2">
                     <p>Categoria</p>
@@ -525,6 +529,10 @@
         var valorAluguelFormat = formData.get('valor_aluguel').replace("R$", "").replace(".", "").replace(",", ".");
         var valorAluguel = Math.round(valorAluguelFormat);
 
+        var condominioFormat = formData.get('condominio').replace("R$", "").replace(".", "").replace(",", ".");
+        var condominio = Math.round(condominioFormat);
+
+
         // var areaUtilFormat = formData.get('area_util').replace(",", ".");
         // var areaUtil = Math.roud(areaUtilFormat);
 
@@ -573,20 +581,28 @@
                                     <PostalCode>01221-020</PostalCode>
                                 </Location>
                             </ContactInfo>
-                        </Location>`;
-        xml += `<Details>
-                            <ListPrice currency="BRL">${preco}</ListPrice>
-                            <YearlyTax currency="BRL">${iptu}</YearlyTax>
+                        </Location>
+                        <Details>`;
+
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Sale") {
+            xml += `<ListPrice currency="BRL">${preco}</ListPrice>`;
+        }
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Rent") {
+            xml += `<RentalPrice currency="BRL" period="Monthly">${precoAluguel}</RentalPrice>`;
+        }
+
+        xml += `<YearlyTax currency="BRL">${iptu}</YearlyTax>
                             <Description><![CDATA[${formData.get('descricao')}]]></Description>
                             <LivingArea unit="square metres">${formData.get('area_util')}</LivingArea>
                             <LotArea unit="square metres">${formData.get('area_total')}</LotArea>
-                            <PropertyAdministrationFee currency="BRL">${valorAluguel}</PropertyAdministrationFee>
+                            <PropertyAdministrationFee currency="BRL">${condominio}</PropertyAdministrationFee>
                             <Bathrooms>${formData.get('quartos')}</Bathrooms>
                             <Garage>${formData.get('vagas')}</Garage>
                             <Floors>${formData.get('nmr_andares')}</Floors>
                             <UnitFloor>${formData.get('andar')}</UnitFloor>
                             <Suites>${formData.get('suites')}</Suites>
                             <YearBuilt>${formData.get('construcao')}</YearBuilt>
+                            <UsageType>${formData.get('tipo_negocio')}</UsageType>
                         </Details>`;
         xml += `</Listing>
                 </Listings>
