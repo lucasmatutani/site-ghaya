@@ -112,7 +112,7 @@
                 <div class="col-2">
                     <p>Zona</p>
                     <select class="form-control form-select" aria-label="Default select example" name="zona">
-                        <option value="1">Padrão</option>
+                        <option value="1">Padreqeão</option>
                         <option value="2">Exemplo</option>
                         <option value="3">Exemplo</option>
                     </select>
