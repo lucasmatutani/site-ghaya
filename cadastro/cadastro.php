@@ -16,9 +16,9 @@
 <body>
     <form action="cadastro_sql.php" method="POST" id="form_cadastro" enctype="multipart/form-data">
         <div class="residencial">
-            <h1 style="margin-bottom: 50px;">Cadastros de imóvel FAZER DEPLOY HOSTINGER</h1>
+            <h1 style="margin-bottom: 50px;">Cadastro de imóvel</h1>
             <div class="row mb-2" style="margin-bottom: 30px !important;">
-                <div class="col-2">
+                <div class="col-3">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="tipo_negocio" value="Residential" onclick="residencial()" required checked>
@@ -40,7 +40,7 @@
                         <label class="form-check-label" for="inlineRadio2">Não</label>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="negocio" id="inlineRadio1" value="For Sale" onclick="venda()" required checked>
@@ -223,7 +223,7 @@
                     <p>Número</p>
                     <input type="text" id="TextInput" class="form-control" name="numero" placeholder="" required>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <p>Complemento</p>
                     <input type="text" id="TextInput" class="form-control" name="complemento" placeholder="" required>
                 </div>
@@ -277,7 +277,7 @@
             </div>
             <h3 style="margin: 40px 0;">Código, Título e descrição do anúncio</h3>
             <div class="row md-4">
-                <div class="col-2">
+                <div class="col-3">
                     <p>Código do Anúncio (interno)</p>
                     <input type="text" id="TextInput" class="form-control" name="codigo_interno" placeholder="" required>
                 </div>
@@ -292,7 +292,7 @@
                     <textarea style="width: 100%;" name="descricao" id="" cols="100" rows="10"></textarea>
                 </div>
             </div>
-            <div class="row">
+            <div class="row md-4">
                 <div class="col">
                     <h3 style="margin-top: 40px;">Características do imóvel (Opcional)</h3>
                     <p><b>Diferenciais</b></p>
@@ -341,7 +341,7 @@
                 </div>
                 <div class="col">
                     <h3 style="margin-top: 40px;">Sobre o Condomínio (opcional)</h3>
-                    <div class="row">
+                    <div class="row md-4">
                         <div class="col">
                             <p><b>Lazer e Esporte</b></p>
                             <div class="form-check">
@@ -466,9 +466,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row md-4">
                 <input type="file" name="imagens[]" id="file_input" multiple>
-                <div class="row" id="preview" style="border: 1px solid #000; padding: 50px; margin-top: 10px;">
+                <div class="" id="preview" style="margin-top: 10px; display: flex; flex-direction: row; padding: 30px;">
                 </div>
             </div>
         </div>
