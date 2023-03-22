@@ -29,3 +29,7 @@ p {
     background-color: darkblue;
     color: #fff;
 }
+
+.disable {
+    display: none !important;
+}
