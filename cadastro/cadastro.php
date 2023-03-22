@@ -467,7 +467,7 @@
                 </div>
             </div>
             <div class="row md-4">
-                <h3>Fotos</h3>
+                <h3>Foto</h3>
                 <input type="file" name="imagens[]" id="file_input" multiple>
                 <div class="row" id="preview" style="margin-top: 10px; padding: 30px;"></div>
             </div>
