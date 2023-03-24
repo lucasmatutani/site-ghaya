@@ -688,8 +688,8 @@
         // var areaTerreno = Math.roud(areaTerrenoFormat);
 
         // Crie um objeto XML
-        var xml = `<xml version="1.0" encoding="UTF-8">`;
-        var xml = `<ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
+        var xml = `<xml version="1.0" encoding="UTF-8">
+        <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
 
         xml += `<Header>
                     <Provider>Desenvolvedor do Feed</Provider>
