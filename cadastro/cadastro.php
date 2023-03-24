@@ -16,7 +16,7 @@
 <body>
     <form action="cadastro_sql.php" method="POST" id="form_cadastro" enctype="multipart/form-data">
         <div class="residencial">
-            <h1 style="margin-bottom: 50px;">Cadastro de imóvel</h1>
+            <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-2" style="margin-bottom: 30px !important;">
                 <div class="col-3">
                     <p>O Imóvel é</p>
@@ -60,40 +60,38 @@
                 <div class="col-2">
                     <p style="margin: 0 0 8px 0;">Tipo Anúncio</p>
                     <select class="form-control form-select" aria-label="Default select example" name="tipo_anuncio" required>
-                        <option value="1">STANDARD</option>
-                        <option value="2">PREMIUM</option>
-                        <option value="3">SUPER_PREMIUM</option>
+                        <option value="STANDARD">padrão</option>
+                        <option value="PREMIUM">Destaque</option>
+                        <option value="SUPER_PREMIUM">Super Destaque</option>
                     </select>
                 </div>
                 <div class="col-2">
                     <p style="margin: 0 0 8px 0;">Tipo de Imóvel</p>
                     <select class="form-control form-select" aria-label="Default select example" id="tp_imovel_residencial" name="tipo_imovel" required>
-                        <option value="1">Apartamento</option>
-                        <option value="2">Casa</option>
-                        <option value="3">Casa de Condomínio</option>
-                        <option value="4">Casa de Vila</option>
-                        <option value="4">Fazenda/Sítio/Casa</option>
-                        <option value="4">Flat</option>
-                        <option value="4">KitNet/Conjugado</option>
-                        <option value="4">Loft</option>
-                        <option value="4">Lote/Terreno</option>
-                        <option value="4">Prédio/Edifício inteiro</option>
-                        <option value="4">Studio</option>
+                        <option value="Residential / Apartment">Apartamento</option>
+                        <option value="Residential / Home">Casa</option>
+                        <option value="Residential / Condo">Casa de Condomínio</option>
+                        <option value="Residential / Village House">Casa de Vila</option>
+                        <option value="Residential / Penthouse">Cobertura</option>
+                        <option value="Residential / Farm Ranch">Fazenda/Sítio/Casa</option>
+                        <option value="Residential / Flat">Flat</option>
+                        <option value="Residential / Kitnet">KitNet/Conjugado</option>
+                        <option value="Residential / Land Lot">Lote/Terreno</option>
+                        <option value="Commercial / Edificio Residencial">Prédio/Edifício inteiro</option>
+                        <option value="Residential / Studio">Studio</option>
                     </select>
                     <select class="form-control form-select disable" aria-label="Default select example" id="tp_imovel_comercial" name="tipo_imovel" required disabled>
-                        <option value="1">Casa</option>
-                        <option value="2">Escritório</option>
-                        <option value="3">Galpão/Depósito/Armazém</option>
-                        <option value="4">Garagem</option>
-                        <option value="4">Hotel/Motel/Pousada</option>
-                        <option value="4">Lote/Terreno</option>
-                        <option value="4">Ponto Comercial/Loja/Box</option>
-                        <option value="4">Prédio/Edíficio inteiro</option>
+                        <option value="Commercial / Building">Casa</option>
+                        <option value="Commercial / Office">Conjunto</option>
+                        <option value="Commercial / Industrial">Galpão/Depósito/Armazém</option>
+                        <option value="Commercial / Land Lot">Lote/Terreno</option>
+                        <option value="Commercial / Business">Ponto Comercial/Loja/Box</option>
+                        <option value="Commercial / Edificio Comercial">Prédio/Edíficio inteiro</option>
                     </select>
                 </div>
             </div>
             <div class="row mb-4">
-                <div class="col-2">
+                <div class="col-2" id="container_preco">
                     <p>Preço</p>
                     <input type="text" id="preco" class="form-control" placeholder="" name="preco" required>
                 </div>
@@ -112,13 +110,50 @@
                 <div class="col-2">
                     <p>Zona</p>
                     <select class="form-control form-select" aria-label="Default select example" name="zona">
-                        <option value="1">Padreqeão</option>
-                        <option value="2">Exemplo</option>
-                        <option value="3">Exemplo</option>
+                        <option value="Zona Leste">Zona Leste</option>
+                        <option value="Zona Norte">Zona Norte</option>
+                        <option value="Zona Oeste">Zona Oeste</option>
+                        <option value="Zona sul">Zona sul</option>
                     </select>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col disable" id="container_garantias">
+                    <p>Garantias</p>
+                    <div style="display: flex; flex-direction: row;" class="check_garantias">
+                        <div class="form-check select_garantia">
+                            <input class="form-check-input garantias" type="checkbox" value="SECURITY_DEPOSIT" id="deposito" name="deposito">
+                            <label class="form-check-label" for="deposito">
+                                Depósito de Segurança
+                            </label>
+                        </div>
+                        <div class="form-check select_garantia">
+                            <input class="form-check-input garantias" type="checkbox" value="GUARANTOR" id="fiador" name="fiador">
+                            <label class="form-check-label" for="fiador">
+                                Fiador
+                            </label>
+                        </div>
+                        <div class="form-check select_garantia">
+                            <input class="form-check-input garantias" type="checkbox" value="INSURANCE_GUARANTEE" id="seguro" name="seguro">
+                            <label class="form-check-label" for="seguro">
+                                Garantia de Seguro
+                            </label>
+                        </div>
+                        <div class="form-check select_garantia">
+                            <input class="form-check-input garantias" type="checkbox" value="GUARANTEE_LETTER" id="carta" name="carta">
+                            <label class="form-check-label" for="carta">
+                                Carta de Garantia
+                            </label>
+                        </div>
+                        <div class="form-check select_garantia">
+                            <input class="form-check-input garantias" type="checkbox" value="CAPITALIZATION_BONDS" id="titulo" name="titulo">
+                            <label class="form-check-label" for="titulo">
+                                Títulos de Capitalização
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row md-4">
                 <div class="col">
                     <p>Quartos</p>
@@ -297,43 +332,37 @@
                     <h3 style="margin-top: 40px;">Características do imóvel (Opcional)</h3>
                     <p><b>Diferenciais</b></p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="ac_animais">
+                        <input class="form-check-input feature" type="checkbox" value="Pets Allowed" id="flexCheckDefault" name="ac_animais">
                         <label class="form-check-label" for="flexCheckDefault">
                             Aceita Animais
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="ar_condicionado">
+                        <input class="form-check-input feature" type="checkbox" value="Cooling" id="flexCheckDefault" name="ar_condicionado">
                         <label class="form-check-label" for="flexCheckDefault">
                             Ar-condicionado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="closet">
+                        <input class="form-check-input feature" type="checkbox" value="Closet" id="flexCheckDefault" name="closet">
                         <label class="form-check-label" for="flexCheckDefault">
                             Closet
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="cozinha_ame">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Cozinha Americana
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="lareira">
+                        <input class="form-check-input feature" type="checkbox" value="Fireplace" id="flexCheckDefault" name="lareira">
                         <label class="form-check-label" for="flexCheckDefault">
                             Lareira
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="mobiliado">
+                        <input class="form-check-input feature" type="checkbox" value="Furnished" id="flexCheckDefault" name="mobiliado">
                         <label class="form-check-label" for="flexCheckDefault">
                             Mobiliado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="varanda_gourmet">
+                        <input class="form-check-input feature" type="checkbox" value="Gourmet Balcony" id="flexCheckDefault" name="varanda_gourmet">
                         <label class="form-check-label" for="flexCheckDefault">
                             Varanda Gourmet
                         </label>
@@ -345,73 +374,73 @@
                         <div class="col">
                             <p><b>Lazer e Esporte</b></p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="academia">
+                                <input class="form-check-input feature" type="checkbox" value="Gym" id="flexCheckDefault" name="academia">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Academia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="churrasqueira">
+                                <input class="form-check-input feature" type="checkbox" value="BBQ" id="flexCheckDefault" name="churrasqueira">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Churrasqueira
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="cinema">
+                                <input class="form-check-input feature" type="checkbox" value="Media Room" id="flexCheckDefault" name="cinema">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Cinema
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="espaco_gourmet">
+                                <input class="form-check-input feature" type="checkbox" value="Gourmet Area" id="flexCheckDefault" name="espaco_gourmet">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Espaço Gourmet
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="jardim">
+                                <input class="form-check-input feature" type="checkbox" value="Garden Area" id="flexCheckDefault" name="jardim">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Jardim
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="piscina">
+                                <input class="form-check-input feature" type="checkbox" value="Pool" id="flexCheckDefault" name="piscina">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Piscina
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="playground">
+                                <input class="form-check-input feature" type="checkbox" value="Playground" id="flexCheckDefault" name="playground">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     PlayGround
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="squash">
+                                <input class="form-check-input feature" type="checkbox" value="Squash" id="flexCheckDefault" name="squash">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra de Squash
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="tenis">
+                                <input class="form-check-input feature" type="checkbox" value="Tennis court" id="flexCheckDefault" name="tenis">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra de Tênis
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="poliesportiva">
+                                <input class="form-check-input feature" type="checkbox" value="Sports Court" id="flexCheckDefault" name="poliesportiva">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Quadra Poliesportiva
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="festas">
+                                <input class="form-check-input feature" type="checkbox" value="Party Room" id="flexCheckDefault" name="festas">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Salão de Festas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="jogos">
+                                <input class="form-check-input feature" type="checkbox" value="Game room" id="flexCheckDefault" name="jogos">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Salão de Jogos
                                 </label>
@@ -421,43 +450,37 @@
                         <div class="col">
                             <p><b>Comodidades e Serviços</b></p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="deficientes">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Acesso para deficientes
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="bicicletario">
+                                <input class="form-check-input feature" type="checkbox" value="Bicycles Place" id="flexCheckDefault" name="bicicletario">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Bicicletários
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="coworking">
+                                <input class="form-check-input feature" type="checkbox" value="Meeting Room" id="flexCheckDefault" name="coworking">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Coworking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="elevador">
+                                <input class="form-check-input feature" type="checkbox" value="Elevator" id="flexCheckDefault" name="elevador">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Elevador
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="lavanderia">
+                                <input class="form-check-input feature" type="checkbox" value="Laundry" id="flexCheckDefault" name="lavanderia">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Lavanderia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="sauna">
+                                <input class="form-check-input feature" type="checkbox" value="Sauna" id="flexCheckDefault" name="sauna">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Sauna
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="spa">
+                                <input class="form-check-input feature" type="checkbox" value="Spa" id="flexCheckDefault" name="spa">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Spa
                                 </label>
@@ -502,22 +525,33 @@
     function venda() {
         valorAluguel = document.querySelector("#valor_aluguel");
         containerAluguel = document.querySelector("#container_aluguel");
+
         valorAluguel.setAttribute('disabled', '');
         containerAluguel.classList.add("disable");
+        document.querySelector("#container_garantias").classList.add("disable");
+        document.querySelector("#container_preco").classList.remove("disable");
     }
 
     function aluguel() {
         valorAluguel = document.querySelector("#valor_aluguel");
         containerAluguel = document.querySelector("#container_aluguel");
+
         valorAluguel.removeAttribute('disabled', '');
         containerAluguel.classList.remove("disable");
+        document.querySelector("#container_garantias").classList.remove("disable");
+        document.querySelector("#container_preco").classList.add("disable");
+
     }
 
     function vendaAluguel() {
         valorAluguel = document.querySelector("#valor_aluguel");
         containerAluguel = document.querySelector("#container_aluguel");
+
         valorAluguel.removeAttribute('disabled', '');
         containerAluguel.classList.remove("disable");
+        document.querySelector("#container_garantias").classList.remove("disable");
+        document.querySelector("#container_preco").classList.remove("disable");
+
     }
 
     const uploadForm = document.querySelector('#form_cadastro');
@@ -604,8 +638,30 @@
         }
     });
 
+
+
     function submitForm(event) {
         event.preventDefault();
+
+
+        const formulario = document.getElementById('form_cadastro');
+        const checkboxesGarantia = formulario.querySelectorAll('input[class="form-check-input garantias"]');
+        const arrayGarantias = [];
+        const checkboxesFeatures = formulario.querySelectorAll('input[class="form-check-input feature"]');
+        const arrayFeatures = [];
+
+        checkboxesGarantia.forEach(checkbox => {
+            if (checkbox.checked) {
+                arrayGarantias.push(checkbox.value);
+            }
+        });
+
+        checkboxesFeatures.forEach(checkbox => {
+            if (checkbox.checked) {
+                arrayFeatures.push(checkbox.value);
+            }
+        });
+        console.log(arrayFeatures);
 
         const formData = new FormData(uploadForm);
 
@@ -615,28 +671,15 @@
         var iptuFormat = formData.get('iptu').replace("R$", "").replace(".", "").replace(",", ".");
         var iptu = Math.round(iptuFormat);
 
-        var valorAluguelFormat = formData.get('valor_aluguel').replace("R$", "").replace(".", "").replace(",", ".");
-        var valorAluguel = Math.round(valorAluguelFormat);
+        if (formData.get('valor_aluguel')) {
+            var valorAluguelFormat = formData.get('valor_aluguel').replace("R$", "").replace(".", "").replace(",", ".");
+            var valorAluguel = Math.round(valorAluguelFormat);
+        }
 
         var condominioFormat = formData.get('condominio').replace("R$", "").replace(".", "").replace(",", ".");
         var condominio = Math.round(condominioFormat);
 
-        // seleciona todos os inputs do tipo "radio"
-        const radios = document.querySelectorAll('input[type="checkbox"]');
 
-        // cria um array vazio para armazenar os valores selecionados
-        const valoresSelecionados = [];
-
-        // itera sobre cada input "radio"
-        radios.forEach(radio => {
-            // verifica se o input está marcado
-            if (radio.checked) {
-                // se estiver marcado, adiciona o valor ao array de valores selecionados
-                valoresSelecionados.push(radio.value);
-            }
-        });
-
-        console.log(valoresSelecionados);
 
         // var areaUtilFormat = formData.get('area_util').replace(",", ".");
         // var areaUtil = Math.roud(areaUtilFormat);
@@ -646,20 +689,23 @@
 
         // Crie um objeto XML
         var xml = `<xml version="1.0" encoding="UTF-8">`;
-        xml += `<ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
+        var xml = `<ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
+
         xml += `<Header>
                     <Provider>Desenvolvedor do Feed</Provider>
                     <Email>lucasmatutani@gmail.com</Email>
                     <ContactName>Lucas Matutani</ContactName>
                     <PublishDate></PublishDate>
                     <Telephone>11-948610869</Telephone>
-                </Header>
-                <Listings>
-                    <Listing>`;
-        xml += `<ListingID>${formData.get('zap')}</ListingID>
+                     </Header>`
+
+        xml += `<Listings>
+        <Listing>
+        <ListingID>${formData.get('zap')}</ListingID>
                         <Title><![CDATA[${formData.get('titulo')}]]></Title>
                         <TransactionType>${formData.get('negocio')}</TransactionType>
                         <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>`;
+
         xml += `<Location displayAddress="Street">
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">${formData.get('estado')}</State>
@@ -692,6 +738,7 @@
         if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Sale") {
             xml += `<ListPrice currency="BRL">${preco}</ListPrice>`;
         }
+
         if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Rent") {
             xml += `<RentalPrice currency="BRL" period="Monthly">${valorAluguel}</RentalPrice>`;
         }
@@ -706,47 +753,62 @@
                             <Garage>${formData.get('vagas')}</Garage>
                             <Floors>${formData.get('nmr_andares')}</Floors>
                             <UnitFloor>${formData.get('andar')}</UnitFloor>
-                            <Buildings>3</Buildings>
+                            <Buildings>${formData.get('nmr_torres')}</Buildings>
                             <Suites>${formData.get('suites')}</Suites>
                             <YearBuilt>${formData.get('construcao')}</YearBuilt>
-                            <UsageType>${formData.get('tipo_negocio')}</UsageType>
-                            <Features>
-                                <Feature>Close to main roads/avenues</Feature>
-                                <Feature>Close to shopping centers</Feature>
-                                <Feature>Close to public transportation</Feature>
-                                <Feature>Close to schools</Feature>
-                                <Feature>Close to hospitals</Feature>
-                                <Feature>Utilities</Feature>
-                                <Feature>Gravel</Feature>
-                            </Features>
-                            <Warranties>
-                                <Warranty>SECURITY_DEPOSIT</Warranty>
-                                <Warranty>GUARANTOR</Warranty>
-                                <Warranty>INSURANCE_GUARANTEE</Warranty>
-                            </Warranties>
-                        </Details>`;
-        xml += `</Listing>
-                </Listings>
+                            <UsageType>${formData.get('tipo_negocio')}</UsageType>\n`;
+
+        xml += `<Features>`;
+        for (let i = 0; i < arrayFeatures.length; i++) {
+            xml += `<Feature>${arrayFeatures[i]}</Feature>`;
+        }
+        xml += `</Features>`;
+
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Rent") {
+            xml += `<Warranties>`;
+            for (let i = 0; i < arrayGarantias.length; i++) {
+                xml += `<Warranty>${arrayGarantias[i]}</Warranty>`;
+            }
+            xml += `</Warranties>`;
+        }
+
+        xml += `</Details>
+            </Listing>
+            </Listings>
             </ListingDataFeed>`;
-        xml += `<root>
-                <nome>${formData.get('nome')}</nome>
-                <email>$formData.get('email')}</email>
-                <mensagem>${formData.get('mensagem')}</mensagem>
-            </root>`;
+        // xml += `<root>
+        //         <nome>${formData.get('nome')}</nome>
+        //         <email>${formData.get('email')}</email>
+        //         <mensagem>${formData.get('mensagem')}</mensagem>
+        //     </root>`;
+
         var parser = new DOMParser();
         var xmlDoc = parser.parseFromString(xml, "text/xml");
-        console.log(xmlDoc);
-        // const url = 'https://example.com/submit-xml'; // URL de envio
-        // const response = fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'User-Agent': 'VivaRealBot/1.0 (+http://www.vivareal.com/bot.html)'
-        //     },
-        //     body: xml
-        // });
 
-        // const result = response.text();
-        // console.log(result); // Exibe a resposta do servidor
+        console.log(xmlDoc);
+        const parserError = xmlDoc.getElementsByTagName('parsererror')[0];
+        if (parserError) {
+            const errorLineNumber = parserError.lineNumber;
+            console.error(`Erro ao analisar o XML na linha ${errorLineNumber}:`, parserError.textContent);
+        } else {
+            console.log('XML analisado com sucesso:', xmlDoc);
+        }
+
+        const serializer = new XMLSerializer();
+        const updatedXml = serializer.serializeToString(xmlDoc);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '../includes/save_xml.php', false);
+        xhr.setRequestHeader('Content-Type', 'application/xml');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                alert(response.message);
+            } else {
+                alert('Erro ao enviar o arquivo XML.');
+            }
+        };
+        xhr.send(updatedXml);
     };
 </script>
 
