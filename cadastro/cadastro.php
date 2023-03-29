@@ -812,7 +812,7 @@
         }
 
         const serializer = new XMLSerializer();
-        const updatedXml = serializer.serializeToString(xml);
+        const updatedXml = serializer.serializeToString(xmlDoc);
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '../includes/save_xml.php', false);
