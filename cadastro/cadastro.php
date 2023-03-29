@@ -21,38 +21,38 @@
                 <div class="col-3">
                     <p>O Imóvel é</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" value="Residential" onclick="residencial()" required checked>
-                        <label class="form-check-label" for="inlineRadio1">Residencial</label>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="residential" value="residential" onclick="residencial()" required checked>
+                        <label class="form-check-label" for="residential">Residencial</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" value="Commercial" onclick="comercial()" required>
-                        <label class="form-check-label" for="inlineRadio2">Comercial</label>
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="commercial" value="Commercial" onclick="comercial()" required>
+                        <label class="form-check-label" for="commercial">Comercial</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <p>Anunciar no Zap ?</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio1" value="1" required checked>
-                        <label class="form-check-label" for="inlineRadio1">Sim</label>
+                        <input class="form-check-input" type="radio" name="zap" id="sim" value="1" required checked>
+                        <label class="form-check-label" for="sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="zap" id="inlineRadio2" value="0" required>
-                        <label class="form-check-label" for="inlineRadio2">Não</label>
+                        <input class="form-check-input" type="radio" name="zap" id="nao" value="0" required>
+                        <label class="form-check-label" for="nao">Não</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio1" value="For Sale" onclick="venda()" required checked>
-                        <label class="form-check-label" for="inlineRadio1">Venda</label>
+                        <input class="form-check-input" type="radio" name="negocio" id="venda" value="For Sale" onclick="venda()" required checked>
+                        <label class="form-check-label" for="venda">Venda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio2" value="For Rent" onclick="aluguel()" required>
-                        <label class="form-check-label" for="inlineRadio2">Aluguel</label>
+                        <input class="form-check-input" type="radio" name="negocio" id="aluguel" value="For Rent" onclick="aluguel()" required>
+                        <label class="form-check-label" for="aluguel">Aluguel</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="negocio" id="inlineRadio2" value="Sale/Rent" onclick="vendaAluguel()" required>
-                        <label class="form-check-label" for="inlineRadio2">Venda e Aluguel</label>
+                        <input class="form-check-input" type="radio" name="negocio" id="venda_aluguel" value="Sale/Rent" onclick="vendaAluguel()" required>
+                        <label class="form-check-label" for="venda_aluguel">Venda e Aluguel</label>
                     </div>
                 </div>
             </div>
@@ -267,7 +267,21 @@
                     <input type="text" id="TextInput" class="form-control" name="bairro_comercial" placeholder="" required>
                 </div>
             </div>
-
+            <div class="row md-4">
+                <h3 style="margin: 40px 0;">Dados do proprietário</h3>
+                <div class="col-3">
+                    <p>Nome</p>
+                    <input type="text" id="TextInput" class="form-control" name="nome" placeholder="" required>
+                </div>
+                <div class="col-3">
+                    <p>Email</p>
+                    <input type="text" id="TextInput" class="form-control" name="email" placeholder="" required>
+                </div>
+                <div class="col-3">
+                    <p>Telefone</p>
+                    <input type="text" id="telefone" class="form-control" name="telefone" placeholder="" required>
+                </div>
+            </div>
 
             <div class="row md-4">
                 <h3 style="margin: 40px 0;">Características do condomínio (opcional)</h3>
@@ -332,38 +346,38 @@
                     <h3 style="margin-top: 40px;">Características do imóvel (Opcional)</h3>
                     <p><b>Diferenciais</b></p>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Pets Allowed" id="flexCheckDefault" name="ac_animais">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Pets Allowed" id="animais" name="ac_animais">
+                        <label class="form-check-label" for="animais">
                             Aceita Animais
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Cooling" id="flexCheckDefault" name="ar_condicionado">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Cooling" id="ar_condicionado" name="ar_condicionado">
+                        <label class="form-check-label" for="ar_condicionado">
                             Ar-condicionado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Closet" id="flexCheckDefault" name="closet">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Closet" id="closet" name="closet">
+                        <label class="form-check-label" for="closet">
                             Closet
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Fireplace" id="flexCheckDefault" name="lareira">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Fireplace" id="lareira" name="lareira">
+                        <label class="form-check-label" for="lareira">
                             Lareira
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Furnished" id="flexCheckDefault" name="mobiliado">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Furnished" id="mobiliado" name="mobiliado">
+                        <label class="form-check-label" for="mobiliado">
                             Mobiliado
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input feature" type="checkbox" value="Gourmet Balcony" id="flexCheckDefault" name="varanda_gourmet">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input feature" type="checkbox" value="Gourmet Balcony" id="varanda_gourmet" name="varanda_gourmet">
+                        <label class="form-check-label" for="varanda_gourmet">
                             Varanda Gourmet
                         </label>
                     </div>
@@ -374,74 +388,74 @@
                         <div class="col">
                             <p><b>Lazer e Esporte</b></p>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Gym" id="flexCheckDefault" name="academia">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Gym" id="academia" name="academia">
+                                <label class="form-check-label" for="academia">
                                     Academia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="BBQ" id="flexCheckDefault" name="churrasqueira">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="BBQ" id="churrasqueira" name="churrasqueira">
+                                <label class="form-check-label" for="churrasqueira">
                                     Churrasqueira
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Media Room" id="flexCheckDefault" name="cinema">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Media Room" id="cinema" name="cinema">
+                                <label class="form-check-label" for="cinema">
                                     Cinema
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Gourmet Area" id="flexCheckDefault" name="espaco_gourmet">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Gourmet Area" id="espaco_gourmet" name="espaco_gourmet">
+                                <label class="form-check-label" for="espaco_gourmet">
                                     Espaço Gourmet
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Garden Area" id="flexCheckDefault" name="jardim">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Garden Area" id="jardim" name="jardim">
+                                <label class="form-check-label" for="jardim">
                                     Jardim
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Pool" id="flexCheckDefault" name="piscina">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Pool" id="piscina" name="piscina">
+                                <label class="form-check-label" for="piscina">
                                     Piscina
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Playground" id="flexCheckDefault" name="playground">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Playground" id="playground" name="playground">
+                                <label class="form-check-label" for="playground">
                                     PlayGround
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Squash" id="flexCheckDefault" name="squash">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Squash" id="squash" name="squash">
+                                <label class="form-check-label" for="squash">
                                     Quadra de Squash
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Tennis court" id="flexCheckDefault" name="tenis">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Tennis court" id="tenis" name="tenis">
+                                <label class="form-check-label" for="tenis">
                                     Quadra de Tênis
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Sports Court" id="flexCheckDefault" name="poliesportiva">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Sports Court" id="poliesportiva" name="poliesportiva">
+                                <label class="form-check-label" for="poliesportiva">
                                     Quadra Poliesportiva
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Party Room" id="flexCheckDefault" name="festas">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Party Room" id="festas" name="festas">
+                                <label class="form-check-label" for="festas">
                                     Salão de Festas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Game room" id="flexCheckDefault" name="jogos">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Game room" id="jogos" name="jogos">
+                                <label class="form-check-label" for="jogos">
                                     Salão de Jogos
                                 </label>
                             </div>
@@ -450,38 +464,38 @@
                         <div class="col">
                             <p><b>Comodidades e Serviços</b></p>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Bicycles Place" id="flexCheckDefault" name="bicicletario">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Bicycles Place" id="bicicletario" name="bicicletario">
+                                <label class="form-check-label" for="bicicletario">
                                     Bicicletários
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Meeting Room" id="flexCheckDefault" name="coworking">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Meeting Room" id="coworking" name="coworking">
+                                <label class="form-check-label" for="coworking">
                                     Coworking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Elevator" id="flexCheckDefault" name="elevador">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Elevator" id="elevador" name="elevador">
+                                <label class="form-check-label" for="elevador">
                                     Elevador
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Laundry" id="flexCheckDefault" name="lavanderia">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Laundry" id="lavanderia" name="lavanderia">
+                                <label class="form-check-label" for="lavanderia">
                                     Lavanderia
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Sauna" id="flexCheckDefault" name="sauna">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Sauna" id="sauna" name="sauna">
+                                <label class="form-check-label" for="sauna">
                                     Sauna
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input feature" type="checkbox" value="Spa" id="flexCheckDefault" name="spa">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input feature" type="checkbox" value="Spa" id="spa" name="spa">
+                                <label class="form-check-label" for="spa">
                                     Spa
                                 </label>
                             </div>
@@ -592,6 +606,7 @@
 
     $(document).ready(function() {
         $("#cep").mask("99999-999");
+        $("#telefone").mask("(99) 99999-9999");
         $('#preco').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
@@ -661,9 +676,10 @@
                 arrayFeatures.push(checkbox.value);
             }
         });
-        console.log(arrayFeatures);
-
         const formData = new FormData(uploadForm);
+
+        var telefoneFormat = formData.get('telefone').replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
+        console.log(telefoneFormat);
 
         var precoFormat = formData.get('preco').replace("R$", "").replace(".", "").replace(",", ".");
         var preco = Math.round(precoFormat);
@@ -756,7 +772,7 @@
                             <Buildings>${formData.get('nmr_torres')}</Buildings>
                             <Suites>${formData.get('suites')}</Suites>
                             <YearBuilt>${formData.get('construcao')}</YearBuilt>
-                            <UsageType>${formData.get('tipo_negocio')}</UsageType>\n`;
+                            <UsageType>${formData.get('tipo_negocio')}</UsageType>`;
 
         xml += `<Features>`;
         for (let i = 0; i < arrayFeatures.length; i++) {
@@ -773,9 +789,10 @@
         }
 
         xml += `</Details>
-            </Listing>
-            </Listings>
-            </ListingDataFeed>`;
+        </Listing>
+        </Listings>
+        </ListingDataFeed>
+        </xml>`;
         // xml += `<root>
         //         <nome>${formData.get('nome')}</nome>
         //         <email>${formData.get('email')}</email>
