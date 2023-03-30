@@ -1,0 +1,58 @@
+<xml version="1.0" encoding="UTF-8">
+        <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync"><Header>
+                    <Provider>Desenvolvedor do Feed</Provider>
+                    <Email>lucasmatutani@gmail.com</Email>
+                    <ContactName>Lucas Matutani</ContactName>
+                    <PublishDate/>
+                    <Telephone>11-948610869</Telephone>
+                     </Header><Listings>
+        <Listing>
+        <ListingID>1</ListingID>
+                        <Title><![CDATA[CAPITALIZATION_BONDS]]></Title>
+                        <TransactionType>For Rent</TransactionType>
+                        <PublicationType>STANDARD</PublicationType><Location displayAddress="Street">
+                            <Country abbreviation="BR">Brasil</Country>
+                            <State abbreviation="SP">SP</State>
+                            <City><![CDATA[São Paulo]]></City>
+                            <Zone>Zona Leste</Zone>
+                            <Neighborhood><![CDATA[Vila Buarque]]></Neighborhood>
+                            <Address><![CDATA[Rua Amaral Gurgel]]></Address>
+                            <StreetNumber>556</StreetNumber>
+                            <Complement>23232</Complement>
+                            <PostalCode>01221-000</PostalCode>
+                            <Media/>
+                            <ContactInfo>
+                                <Name>Ghaya Imóveis</Name>
+                                <Email>contato@ghayaimoveis.com.br</Email>
+                                <Website>http://www.ghayaimoveis.com.br</Website>
+                                <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                                <Telephone>(11) 5055-5598</Telephone>
+                                <Location>
+                                    <Country abbreviation="BR">Brasil</Country>
+                                    <State abbreviation="SP">Sao Paulo</State>
+                                    <City>São Paulo</City>
+                                    <Neighborhood>Vila Buarque</Neighborhood>
+                                    <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                                    <PostalCode>01221-020</PostalCode>
+                                </Location>
+                            </ContactInfo>
+                        </Location>
+                        <Details><RentalPrice currency="BRL" period="Monthly">323</RentalPrice><YearlyTax currency="BRL">2323</YearlyTax>
+                            <Description><![CDATA[awdpawojkdpioawjdoiajwdjawjdoiawjdjawojdoijawojdawdawddrgdrgdgfdgdfgdfgdf]]></Description>
+                            <LivingArea unit="square metres">23232</LivingArea>
+                            <LotArea unit="square metres">3232</LotArea>
+                            <PropertyAdministrationFee currency="BRL">NaN</PropertyAdministrationFee>
+                            <Bathrooms>1</Bathrooms>
+                            <Bedrooms>1</Bedrooms>
+                            <Garage>1</Garage>
+                            <Floors>23232</Floors>
+                            <UnitFloor>323232</UnitFloor>
+                            <Buildings>1</Buildings>
+                            <Suites>1</Suites>
+                            <YearBuilt>232323</YearBuilt>
+                            <UsageType>residential</UsageType>
+<Features><Feature>Cooling</Feature><Feature>Fireplace</Feature><Feature>Furnished</Feature><Feature>Gourmet Area</Feature><Feature>Garden Area</Feature><Feature>Pool</Feature><Feature>Bicycles Place</Feature><Feature>Meeting Room</Feature><Feature>Elevator</Feature></Features><Warranties><Warranty>SECURITY_DEPOSIT</Warranty><Warranty>INSURANCE_GUARANTEE</Warranty><Warranty>CAPITALIZATION_BONDS</Warranty></Warranties></Details>
+        </Listing>
+        </Listings>
+        </ListingDataFeed>
+        </xml>
