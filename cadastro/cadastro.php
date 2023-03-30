@@ -695,7 +695,23 @@
         var condominioFormat = formData.get('condominio').replace("R$", "").replace(".", "").replace(",", ".");
         var condominio = Math.round(condominioFormat);
 
-
+        // Cria uma data atual
+        const currentDate = new Date();
+        // Define o fuso horário como GMT-3
+        const timeZone = 'America/Sao_Paulo';
+        // Converte a data para o fuso horário desejado
+        const formatter = new Intl.DateTimeFormat('pt-BR', {
+            timeZone: timeZone,
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        });
+        // Formata a data no padrão desejado (dd/MM/yyyy)
+        const formattedDate = formatter
+            .format(currentDate)
+            .split('/')
+            .reverse()
+            .join('-');
 
         // var areaUtilFormat = formData.get('area_util').replace(",", ".");
         // var areaUtil = Math.roud(areaUtilFormat);
@@ -711,7 +727,7 @@
                     <Provider>Desenvolvedor do Feed</Provider>
                     <Email>lucasmatutani@gmail.com</Email>
                     <ContactName>Lucas Matutani</ContactName>
-                    <PublishDate></PublishDate>
+                    <PublishDate>${formattedDate}</PublishDate>
                     <Telephone>11-948610869</Telephone>
                      </Header>`
 
@@ -802,7 +818,6 @@
         var parser = new DOMParser();
         var xmlDoc = parser.parseFromString(xml, "text/xml");
 
-        console.log(xmlDoc);
         const parserError = xmlDoc.getElementsByTagName('parsererror')[0];
         if (parserError) {
             const errorLineNumber = parserError.lineNumber;
