@@ -772,7 +772,7 @@
                             <Buildings>${formData.get('nmr_torres')}</Buildings>
                             <Suites>${formData.get('suites')}</Suites>
                             <YearBuilt>${formData.get('construcao')}</YearBuilt>
-                            <UsageType>${formData.get('tipo_negocio')}</UsageType>`;
+                            <UsageType>${formData.get('tipo_negocio')}</UsageType>\n`;
 
         xml += `<Features>`;
         for (let i = 0; i < arrayFeatures.length; i++) {
