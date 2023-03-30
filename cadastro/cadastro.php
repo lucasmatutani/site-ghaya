@@ -553,7 +553,7 @@
         valorAluguel.removeAttribute('disabled', '');
         containerAluguel.classList.remove("disable");
         document.querySelector("#container_garantias").classList.remove("disable");
-        document.querySelector("#container_preco").classList.remove("disable");
+        document.querySelector("#container_preco").classList.add("disable");
 
     }
 
