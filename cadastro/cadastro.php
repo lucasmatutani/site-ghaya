@@ -43,11 +43,11 @@
                 <div class="col-4">
                     <p>Tipo de negociação</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="negocio" id="venda" value="For Sale" onclick="venda()" required checked>
+                        <input class="form-check-input" type="radio" name="negocio" id="venda" value="For Sale" onclick="vendendo()" required checked>
                         <label class="form-check-label" for="venda">Venda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="negocio" id="aluguel" value="For Rent" onclick="aluguel()" required>
+                        <input class="form-check-input" type="radio" name="negocio" id="aluguel" value="For Rent" onclick="locacao()" required>
                         <label class="form-check-label" for="aluguel">Aluguel</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -536,7 +536,7 @@
         typeComercial.classList.add("disable");
     }
 
-    function venda() {
+    function vendendo() {
         valorAluguel = document.querySelector("#valor_aluguel");
         containerAluguel = document.querySelector("#container_aluguel");
 
@@ -546,14 +546,14 @@
         document.querySelector("#container_preco").classList.remove("disable");
     }
 
-    function aluguel() {
+    function locacao() {
         valorAluguel = document.querySelector("#valor_aluguel");
         containerAluguel = document.querySelector("#container_aluguel");
 
         valorAluguel.removeAttribute('disabled', '');
         containerAluguel.classList.remove("disable");
         document.querySelector("#container_garantias").classList.remove("disable");
-        document.querySelector("#container_preco").classList.add("disable");
+        document.querySelector("#container_preco").classList.remove("disable");
 
     }
 
