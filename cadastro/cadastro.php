@@ -791,7 +791,8 @@
         xml += `</Details>
         </Listing>
         </Listings>
-        </ListingDataFeed>`;
+        </ListingDataFeed>
+        </xml>`;
         // xml += `<root>
         //         <nome>${formData.get('nome')}</nome>
         //         <email>${formData.get('email')}</email>
