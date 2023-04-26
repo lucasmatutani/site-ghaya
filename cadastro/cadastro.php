@@ -733,39 +733,14 @@
 
         xml += `<Listings>
         <Listing>
-        <ListingID>${formData.get('zap')}</ListingID>
+                        <ListingID>${formData.get('zap')}</ListingID>
                         <Title><![CDATA[${formData.get('titulo')}]]></Title>
                         <TransactionType>${formData.get('negocio')}</TransactionType>
                         <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>`;
 
-        xml += `<Location displayAddress="Street">
-                            <Country abbreviation="BR">Brasil</Country>
-                            <State abbreviation="SP">${formData.get('estado')}</State>
-                            <City><![CDATA[${formData.get('cidade')}]]></City>
-                            <Zone>${formData.get('zona')}</Zone>
-                            <Neighborhood><![CDATA[${formData.get('bairro')}]]></Neighborhood>
-                            <Address><![CDATA[${formData.get('endereco')}]]></Address>
-                            <StreetNumber>${formData.get('numero')}</StreetNumber>
-                            <Complement>${formData.get('complemento')}</Complement>
-                            <PostalCode>${formData.get('cep')}</PostalCode>
-                            <Media></Media>
-                            <ContactInfo>
-                                <Name>Ghaya Imóveis</Name>
-                                <Email>contato@ghayaimoveis.com.br</Email>
-                                <Website>http://www.ghayaimoveis.com.br</Website>
-                                <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
-                                <Telephone>(11) 5055-5598</Telephone>
-                                <Location>
-                                    <Country abbreviation="BR">Brasil</Country>
-                                    <State abbreviation="SP">Sao Paulo</State>
-                                    <City>São Paulo</City>
-                                    <Neighborhood>Vila Buarque</Neighborhood>
-                                    <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
-                                    <PostalCode>01221-020</PostalCode>
-                                </Location>
-                            </ContactInfo>
-                        </Location>
-                        <Details>`;
+        xml += `<Media></Media>`;
+
+        xml += `<Details>`;
 
         if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Sale") {
             xml += `<ListPrice currency="BRL">${preco}</ListPrice>`;
@@ -776,13 +751,14 @@
         }
 
         xml += `<YearlyTax currency="BRL">${iptu}</YearlyTax>
+                            <PropertyType>${formData.get('tipo_imovel')}</PropertyType>
                             <Description><![CDATA[${formData.get('descricao')}]]></Description>
                             <LivingArea unit="square metres">${formData.get('area_util')}</LivingArea>
                             <LotArea unit="square metres">${formData.get('area_total')}</LotArea>
                             <PropertyAdministrationFee currency="BRL">${condominio}</PropertyAdministrationFee>
                             <Bathrooms>${formData.get('banheiros')}</Bathrooms>
                             <Bedrooms>${formData.get('quartos')}</Bedrooms>
-                            <Garage>${formData.get('vagas')}</Garage>
+                            <Garage type="Parking Space">${formData.get('vagas')}</Garage>
                             <Floors>${formData.get('nmr_andares')}</Floors>
                             <UnitFloor>${formData.get('andar')}</UnitFloor>
                             <Buildings>${formData.get('nmr_torres')}</Buildings>
@@ -804,11 +780,40 @@
             xml += `</Warranties>`;
         }
 
-        xml += `</Details>
-        </Listing>
+        xml += `</Details>`;
+
+        xml += `<Location displayAddress="Street">
+                            <Country abbreviation="BR">Brasil</Country>
+                            <State abbreviation="SP">${formData.get('estado')}</State>
+                            <City><![CDATA[${formData.get('cidade')}]]></City>
+                            <Zone>${formData.get('zona')}</Zone>
+                            <Neighborhood><![CDATA[${formData.get('bairro')}]]></Neighborhood>
+                            <Address><![CDATA[${formData.get('endereco')}]]></Address>
+                            <StreetNumber>${formData.get('numero')}</StreetNumber>
+                            <Complement>${formData.get('complemento')}</Complement>
+                            <PostalCode>${formData.get('cep')}</PostalCode>
+                            <ContactInfo>
+                                <Name>Ghaya Imóveis</Name>
+                                <Email>contato@ghayaimoveis.com.br</Email>
+                                <Website>http://www.ghayaimoveis.com.br</Website>
+                                <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                                <Telephone>(11) 5055-5598</Telephone>
+                                <Location>
+                                    <Country abbreviation="BR">Brasil</Country>
+                                    <State abbreviation="SP">Sao Paulo</State>
+                                    <City>São Paulo</City>
+                                    <Neighborhood>Vila Buarque</Neighborhood>
+                                    <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                                    <PostalCode>01221-020</PostalCode>
+                                </Location>
+                            </ContactInfo>
+                        </Location>`;
+
+        xml += `</Listing>
         </Listings>
         </ListingDataFeed>
         </xml>`;
+
         // xml += `<root>
         //         <nome>${formData.get('nome')}</nome>
         //         <email>${formData.get('email')}</email>
