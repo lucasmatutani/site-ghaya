@@ -3,14 +3,29 @@
                     <Provider>Desenvolvedor do Feed</Provider>
                     <Email>lucasmatutani@gmail.com</Email>
                     <ContactName>Lucas Matutani</ContactName>
-                    <PublishDate/>
+                    <PublishDate>2023-04-26</PublishDate>
                     <Telephone>11-948610869</Telephone>
                      </Header><Listings>
         <Listing>
-        <ListingID>1</ListingID>
-                        <Title><![CDATA[CAPITALIZATION_BONDS]]></Title>
-                        <TransactionType>For Rent</TransactionType>
-                        <PublicationType>STANDARD</PublicationType><Location displayAddress="Street">
+                        <ListingID>1</ListingID>
+                        <Title><![CDATA[sdfsrfgdsrgdrgdrgdrgd]]></Title>
+                        <TransactionType>Sale/Rent</TransactionType>
+                        <PublicationType>STANDARD</PublicationType><Media/><Details><ListPrice currency="BRL">2323</ListPrice><RentalPrice currency="BRL" period="Monthly">2323</RentalPrice><YearlyTax currency="BRL">2032</YearlyTax>
+                            <PropertyType>Residential / Apartment</PropertyType>
+                            <Description><![CDATA[rgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgdrgfthtfoihjoijfoisejfiosejfiosefsef]]></Description>
+                            <LivingArea unit="square metres">23232</LivingArea>
+                            <LotArea unit="square metres">32323</LotArea>
+                            <PropertyAdministrationFee currency="BRL">32323</PropertyAdministrationFee>
+                            <Bathrooms>5</Bathrooms>
+                            <Bedrooms>3</Bedrooms>
+                            <Garage type="Parking Space">3</Garage>
+                            <Floors>223</Floors>
+                            <UnitFloor>232</UnitFloor>
+                            <Buildings>4</Buildings>
+                            <Suites>4</Suites>
+                            <YearBuilt>23242</YearBuilt>
+                            <UsageType>residential</UsageType>
+<Features><Feature>Cooling</Feature><Feature>Closet</Feature><Feature>Fireplace</Feature><Feature>Furnished</Feature><Feature>Gourmet Area</Feature><Feature>Garden Area</Feature><Feature>Pool</Feature><Feature>Playground</Feature><Feature>Tennis court</Feature><Feature>Bicycles Place</Feature><Feature>Meeting Room</Feature><Feature>Sauna</Feature><Feature>Spa</Feature></Features><Warranties><Warranty>SECURITY_DEPOSIT</Warranty><Warranty>GUARANTOR</Warranty><Warranty>INSURANCE_GUARANTEE</Warranty></Warranties></Details><Location displayAddress="Street">
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">SP</State>
                             <City><![CDATA[São Paulo]]></City>
@@ -18,9 +33,8 @@
                             <Neighborhood><![CDATA[Vila Buarque]]></Neighborhood>
                             <Address><![CDATA[Rua Amaral Gurgel]]></Address>
                             <StreetNumber>556</StreetNumber>
-                            <Complement>23232</Complement>
+                            <Complement>34343</Complement>
                             <PostalCode>01221-000</PostalCode>
-                            <Media/>
                             <ContactInfo>
                                 <Name>Ghaya Imóveis</Name>
                                 <Email>contato@ghayaimoveis.com.br</Email>
@@ -36,23 +50,7 @@
                                     <PostalCode>01221-020</PostalCode>
                                 </Location>
                             </ContactInfo>
-                        </Location>
-                        <Details><RentalPrice currency="BRL" period="Monthly">323</RentalPrice><YearlyTax currency="BRL">2323</YearlyTax>
-                            <Description><![CDATA[awdpawojkdpioawjdoiajwdjawjdoiawjdjawojdoijawojdawdawddrgdrgdgfdgdfgdfgdf]]></Description>
-                            <LivingArea unit="square metres">23232</LivingArea>
-                            <LotArea unit="square metres">3232</LotArea>
-                            <PropertyAdministrationFee currency="BRL">NaN</PropertyAdministrationFee>
-                            <Bathrooms>1</Bathrooms>
-                            <Bedrooms>1</Bedrooms>
-                            <Garage>1</Garage>
-                            <Floors>23232</Floors>
-                            <UnitFloor>323232</UnitFloor>
-                            <Buildings>1</Buildings>
-                            <Suites>1</Suites>
-                            <YearBuilt>232323</YearBuilt>
-                            <UsageType>residential</UsageType>
-<Features><Feature>Cooling</Feature><Feature>Fireplace</Feature><Feature>Furnished</Feature><Feature>Gourmet Area</Feature><Feature>Garden Area</Feature><Feature>Pool</Feature><Feature>Bicycles Place</Feature><Feature>Meeting Room</Feature><Feature>Elevator</Feature></Features><Warranties><Warranty>SECURITY_DEPOSIT</Warranty><Warranty>INSURANCE_GUARANTEE</Warranty><Warranty>CAPITALIZATION_BONDS</Warranty></Warranties></Details>
-        </Listing>
+                        </Location></Listing>
         </Listings>
         </ListingDataFeed>
         </xml>
