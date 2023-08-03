@@ -5,9 +5,11 @@ class XMLManager {
 
     public function __construct($headerInfo, $xmlString) {
         if (file_exists('../includes/uploads/listings.xml')) {
+            exit("EXISTE");
             $this->xml = simplexml_load_file('../includes/uploads/listings.xml');
             $this->listingsNode = $this->xml->Listings;
         } else {
+            exit("NÂO EXISTE");
             $this->xml = new SimpleXMLElement($xmlString);
 
             $header = $this->xml->addChild('Header');
@@ -23,7 +25,7 @@ class XMLManager {
 
     public function addListing($listingData) {
         $listings = $this->xml->Listings;
-        
+
         if (!isset($listings)) {
             $this->listingsNode = $this->xml->addChild('Listings');
         } else {
