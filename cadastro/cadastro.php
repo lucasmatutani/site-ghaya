@@ -1,3 +1,10 @@
+<?php
+// $sql = "SELECT image_path FROM table";
+// $result = $conn->query($sql);
+// while ($row = $result->fetch_assoc()) {
+//     echo '<img src="' . $row['image_path'] . '">';
+// }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -505,7 +512,7 @@
             </div>
             <div class="row md-4">
                 <h3>Fotos</h3>
-                <input type="file" name="imagens[]" id="file_input" multiple>
+                <input type="file" name="images[]" id="images" multiple>
                 <div class="row" id="preview" style="margin-top: 10px; padding: 30px;"></div>
             </div>
         </div>
@@ -568,41 +575,50 @@
 
     }
 
-    const uploadForm = document.querySelector('#form_cadastro');
-    const fileInput = document.querySelector('#file_input');
-    const previewDiv = document.querySelector('#preview');
-    let previews = [];
-
-    fileInput.addEventListener('change', () => {
-        iptu = Math.round(document.getElementById("iptu").value.replace("R$", "").replace(".", "").replace(",", "."));
-        // Percorra todos os arquivos selecionados pelo usuário
-        for (const file of fileInput.files) {
-            // Verifique se o arquivo já foi carregado antes
-            if (!previews.some(preview => preview.name === file.name)) {
-                // Crie um objeto FileReader para ler o conteúdo do arquivo
-                const reader = new FileReader();
-                reader.onload = () => {
-                    // Crie um elemento de imagem para exibir a prévia do arquivo
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-                    img.style.width = '300px';
-                    img.style.height = '200px';
-                    img.style.margin = '0 0 40px 0';
-                    const div = document.createElement('div');
-                    div.classList.add("col")
-                    div.appendChild(img);
-                    previewDiv.appendChild(div);
-
-                    // Adicione a prévia do arquivo à matriz de prévias
-                    previews.push({
-                        name: file.name,
-                        url: reader.result
-                    });
-                };
-                reader.readAsDataURL(file);
-            }
+    document.getElementById('images').onchange = function(e) {
+        var previewDiv = document.getElementById('preview');
+        for (var i = 0; i < e.target.files.length; i++) {
+            var img = document.createElement('img');
+            img.src = URL.createObjectURL(e.target.files[i]);
+            previewDiv.appendChild(img);
         }
-    });
+    };
+
+
+    // const uploadForm = document.querySelector('#form_cadastro');
+    // const fileInput = document.querySelector('#file_input');
+    // const previewDiv = document.querySelector('#preview');
+    // let previews = [];
+
+    // fileInput.addEventListener('change', () => {
+    //     // Percorra todos os arquivos selecionados pelo usuário
+    //     for (const file of fileInput.files) {
+    //         // Verifique se o arquivo já foi carregado antes
+    //         if (!previews.some(preview => preview.name === file.name)) {
+    //             // Crie um objeto FileReader para ler o conteúdo do arquivo
+    //             const reader = new FileReader();
+    //             reader.onload = () => {
+    //                 // Crie um elemento de imagem para exibir a prévia do arquivo
+    //                 const img = document.createElement('img');
+    //                 img.src = reader.result;
+    //                 img.style.width = '300px';
+    //                 img.style.height = '200px';
+    //                 img.style.margin = '0 0 40px 0';
+    //                 const div = document.createElement('div');
+    //                 div.classList.add("col")
+    //                 div.appendChild(img);
+    //                 previewDiv.appendChild(div);
+
+    //                 // Adicione a prévia do arquivo à matriz de prévias
+    //                 previews.push({
+    //                     name: file.name,
+    //                     url: reader.result
+    //                 });
+    //             };
+    //             reader.readAsDataURL(file);
+    //         }
+    //     }
+    // });
 
     $(document).ready(function() {
         $("#cep").mask("99999-999");
@@ -610,29 +626,29 @@
         $('#preco').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '.',
-            decimal: ',',
+            thousands: '',
+            decimal: '',
             affixesStay: true
         });
         $('#iptu').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '.',
-            decimal: ',',
+            thousands: '',
+            decimal: '',
             affixesStay: true
         });
         $('#valor_aluguel').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '.',
-            decimal: ',',
+            thousands: '',
+            decimal: '',
             affixesStay: true
         });
         $('#condominio').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '.',
-            decimal: ',',
+            thousands: '',
+            decimal: '',
             affixesStay: true
         });
     })
@@ -658,67 +674,7 @@
     function submitForm(event) {
         event.preventDefault();
 
-
-        const formulario = document.getElementById('form_cadastro');
-        const checkboxesGarantia = formulario.querySelectorAll('input[class="form-check-input garantias"]');
-        const arrayGarantias = [];
-        const checkboxesFeatures = formulario.querySelectorAll('input[class="form-check-input feature"]');
-        const arrayFeatures = [];
-
-        checkboxesGarantia.forEach(checkbox => {
-            if (checkbox.checked) {
-                arrayGarantias.push(checkbox.value);
-            }
-        });
-
-        checkboxesFeatures.forEach(checkbox => {
-            if (checkbox.checked) {
-                arrayFeatures.push(checkbox.value);
-            }
-        });
-        const formData = new FormData(uploadForm);
-
-        var telefoneFormat = formData.get('telefone').replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
-        console.log(telefoneFormat);
-
-        var precoFormat = formData.get('preco').replace("R$", "").replace(".", "").replace(",", ".");
-        var preco = Math.round(precoFormat);
-
-        var iptuFormat = formData.get('iptu').replace("R$", "").replace(".", "").replace(",", ".");
-        var iptu = Math.round(iptuFormat);
-
-        if (formData.get('valor_aluguel')) {
-            var valorAluguelFormat = formData.get('valor_aluguel').replace("R$", "").replace(".", "").replace(",", ".");
-            var valorAluguel = Math.round(valorAluguelFormat);
-        }
-
-        var condominioFormat = formData.get('condominio').replace("R$", "").replace(".", "").replace(",", ".");
-        var condominio = Math.round(condominioFormat);
-
-        // Cria uma data atual
-        const currentDate = new Date();
-        // Define o fuso horário como GMT-3
-        const timeZone = 'America/Sao_Paulo';
-        // Converte a data para o fuso horário desejado
-        const formatter = new Intl.DateTimeFormat('pt-BR', {
-            timeZone: timeZone,
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-        // Formata a data no padrão desejado (dd/MM/yyyy)
-        const formattedDate = formatter
-            .format(currentDate)
-            .split('/')
-            .reverse()
-            .join('-');
-
         document.getElementById("form_cadastro").submit();
-        // var areaUtilFormat = formData.get('area_util').replace(",", ".");
-        // var areaUtil = Math.roud(areaUtilFormat);
-
-        // var areaTerrenoFormat = formData.get('area_total').replace(",", ".");
-        // var areaTerreno = Math.roud(areaTerrenoFormat);
     };
 </script>
 
