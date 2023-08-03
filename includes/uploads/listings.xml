@@ -1,0 +1,82 @@
+<xml version="1.0" encoding="UTF-8">
+    <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
+        <Header>
+            <Provider>Desenvolvedor do Feed</Provider>
+            <Email>lucasmatutani@gmail.com</Email>
+            <ContactName>Lucas Matutani</ContactName>
+            <PublishDate>2023-06-29</PublishDate>
+            <Telephone>11-948610869</Telephone>
+        </Header>
+        <Listings>
+            <Listing>
+                <ListingID>1</ListingID>
+                <Title><![CDATA[CAPITALIZATION_BONDS]]></Title>
+                <TransactionType>Sale/Rent</TransactionType>
+                <PublicationType>PREMIUM</PublicationType>
+                <Media/>
+                <Details>
+                    <ListPrice currency="BRL">22232</ListPrice>
+                    <RentalPrice currency="BRL" period="Monthly">123123</RentalPrice>
+                    <YearlyTax currency="BRL">23232</YearlyTax>
+                    <PropertyType>Residential / Village House</PropertyType>
+                    <Description><![CDATA[awdawdawdawdawdawdawdawdawdawdawdawdawdawdjawpdjawdjkapwkdpoawkopdkawopkdopawkdopawkopdkawpkodaw]]></Description>
+                    <LivingArea unit="square metres">23213</LivingArea>
+                    <LotArea unit="square metres">232323</LotArea>
+                    <PropertyAdministrationFee currency="BRL">232323</PropertyAdministrationFee>
+                    <Bathrooms>6</Bathrooms>
+                    <Bedrooms>3</Bedrooms>
+                    <Garage type="Parking Space">6</Garage>
+                    <Floors>22</Floors>
+                    <UnitFloor>23</UnitFloor>
+                    <Buildings>3</Buildings>
+                    <Suites>5</Suites>
+                    <YearBuilt>12312</YearBuilt>
+                    <UsageType>residential</UsageType>
+                    <Features>
+                        <Feature>Cooling</Feature>
+                        <Feature>Fireplace</Feature>
+                        <Feature>Furnished</Feature>
+                        <Feature>Media Room</Feature>
+                        <Feature>Garden Area</Feature>
+                        <Feature>Playground</Feature>
+                        <Feature>Elevator</Feature>
+                        <Feature>Sauna</Feature>
+                    </Features>
+                    <Warranties>
+                        <Warranty>SECURITY_DEPOSIT</Warranty>
+                        <Warranty>INSURANCE_GUARANTEE</Warranty>
+                        <Warranty>GUARANTEE_LETTER</Warranty>
+                        <Warranty>CAPITALIZATION_BONDS</Warranty>
+                    </Warranties>
+                </Details>
+                <Location displayAddress="Street">
+                    <Country abbreviation="BR">Brasil</Country>
+                    <State abbreviation="SP">SP</State>
+                    <City><![CDATA[São Paulo]]></City>
+                    <Zone>Zona Oeste</Zone>
+                    <Neighborhood><![CDATA[Vila Buarque]]></Neighborhood>
+                    <Address><![CDATA[Rua Amaral Gurgel]]></Address>
+                    <StreetNumber>556</StreetNumber>
+                    <Complement>ap 52</Complement>
+                    <PostalCode>01221-000</PostalCode>
+                    <ContactInfo>
+                        <Name>Ghaya Imóveis</Name>
+                        <Email>contato@ghayaimoveis.com.br</Email>
+                        <Website>http://www.ghayaimoveis.com.br</Website>
+                        <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                        <Telephone>(11) 5055-5598</Telephone>
+                        <Location>
+                            <Country abbreviation="BR">Brasil</Country>
+                            <State abbreviation="SP">Sao Paulo</State>
+                            <City>São Paulo</City>
+                            <Neighborhood>Vila Buarque</Neighborhood>
+                            <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                            <PostalCode>01221-020</PostalCode>
+                        </Location>
+                    </ContactInfo>
+                </Location>
+            </Listing>
+        </Listings>
+    </ListingDataFeed>
+</xml>

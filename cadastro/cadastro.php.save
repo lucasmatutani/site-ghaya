@@ -713,12 +713,139 @@
             .reverse()
             .join('-');
 
-        document.getElementById("form_cadastro").submit();
         // var areaUtilFormat = formData.get('area_util').replace(",", ".");
         // var areaUtil = Math.roud(areaUtilFormat);
 
         // var areaTerrenoFormat = formData.get('area_total').replace(",", ".");
         // var areaTerreno = Math.roud(areaTerrenoFormat);
+
+        // Crie um objeto XML
+        var xml = `<xml version="1.0" encoding="UTF-8">
+        <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">`;
+
+        xml += `<Header>
+                    <Provider>Desenvolvedor do Feed</Provider>
+                    <Email>lucasmatutani@gmail.com</Email>
+                    <ContactName>Lucas Matutani</ContactName>
+                    <PublishDate>${formattedDate}</PublishDate>
+                    <Telephone>11-948610869</Telephone>
+                     </Header>`
+
+        xml += `<Listings>
+        <Listing>
+                        <ListingID>${formData.get('zap')}</ListingID>
+                        <Title><![CDATA[${formData.get('titulo')}]]></Title>
+                        <TransactionType>${formData.get('negocio')}</TransactionType>
+                        <PublicationType>${formData.get('tipo_anuncio')}</PublicationType>`;
+
+        xml += `<Media></Media>`;
+
+        xml += `<Details>`;
+
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Sale") {
+            xml += `<ListPrice currency="BRL">${preco}</ListPrice>`;
+        }
+
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Rent") {
+            xml += `<RentalPrice currency="BRL" period="Monthly">${valorAluguel}</RentalPrice>`;
+        }
+
+        xml += `<YearlyTax currency="BRL">${iptu}</YearlyTax>
+                            <PropertyType>${formData.get('tipo_imovel')}</PropertyType>
+                            <Description><![CDATA[${formData.get('descricao')}]]></Description>
+                            <LivingArea unit="square metres">${formData.get('area_util')}</LivingArea>
+                            <LotArea unit="square metres">${formData.get('area_total')}</LotArea>
+                            <PropertyAdministrationFee currency="BRL">${condominio}</PropertyAdministrationFee>
+                            <Bathrooms>${formData.get('banheiros')}</Bathrooms>
+                            <Bedrooms>${formData.get('quartos')}</Bedrooms>
+                            <Garage type="Parking Space">${formData.get('vagas')}</Garage>
+                            <Floors>${formData.get('nmr_andares')}</Floors>
+                            <UnitFloor>${formData.get('andar')}</UnitFloor>
+                            <Buildings>${formData.get('nmr_torres')}</Buildings>
+                            <Suites>${formData.get('suites')}</Suites>
+                            <YearBuilt>${formData.get('construcao')}</YearBuilt>
+                            <UsageType>${formData.get('tipo_negocio')}</UsageType>\n`;
+
+        xml += `<Features>`;
+        for (let i = 0; i < arrayFeatures.length; i++) {
+            xml += `<Feature>${arrayFeatures[i]}</Feature>`;
+        }
+        xml += `</Features>`;
+
+        if (formData.get('negocio') == "Sale/Rent" || formData.get('negocio') == "For Rent") {
+            xml += `<Warranties>`;
+            for (let i = 0; i < arrayGarantias.length; i++) {
+                xml += `<Warranty>${arrayGarantias[i]}</Warranty>`;
+            }
+            xml += `</Warranties>`;
+        }
+
+        xml += `</Details>`;
+
+        xml += `<Location displayAddress="Street">
+                            <Country abbreviation="BR">Brasil</Country>
+                            <State abbreviation="SP">${formData.get('estado')}</State>
+                            <City><![CDATA[${formData.get('cidade')}]]></City>
+                            <Zone>${formData.get('zona')}</Zone>
+                            <Neighborhood><![CDATA[${formData.get('bairro')}]]></Neighborhood>
+                            <Address><![CDATA[${formData.get('endereco')}]]></Address>
+                            <StreetNumber>${formData.get('numero')}</StreetNumber>
+                            <Complement>${formData.get('complemento')}</Complement>
+                            <PostalCode>${formData.get('cep')}</PostalCode>
+                            <ContactInfo>
+                                <Name>Ghaya Imóveis</Name>
+                                <Email>contato@ghayaimoveis.com.br</Email>
+                                <Website>http://www.ghayaimoveis.com.br</Website>
+                                <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                                <Telephone>(11) 5055-5598</Telephone>
+                                <Location>
+                                    <Country abbreviation="BR">Brasil</Country>
+                                    <State abbreviation="SP">Sao Paulo</State>
+                                    <City>São Paulo</City>
+                                    <Neighborhood>Vila Buarque</Neighborhood>
+                                    <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                                    <PostalCode>01221-020</PostalCode>
+                                </Location>
+                            </ContactInfo>
+                        </Location>`;
+
+        xml += `</Listing>
+        </Listings>
+        </ListingDataFeed>
+        </xml>`;
+
+        // xml += `<root>
+        //         <nome>${formData.get('nome')}</nome>
+        //         <email>${formData.get('email')}</email>
+        //         <mensagem>${formData.get('mensagem')}</mensagem>
+        //     </root>`;
+
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xml, "text/xml");
+
+        const parserError = xmlDoc.getElementsByTagName('parsererror')[0];
+        if (parserError) {
+            const errorLineNumber = parserError.lineNumber;
+            console.error(`Erro ao analisar o XML na linha ${errorLineNumber}:`, parserError.textContent);
+        } else {
+            console.log('XML analisado com sucesso:', xmlDoc);
+        }
+
+        const serializer = new XMLSerializer();
+        const updatedXml = serializer.serializeToString(xmlDoc);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '../includes/save_xml.php', false);
+        xhr.setRequestHeader('Content-Type', 'application/xml');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                alert(response.message);
+            } else {
+                alert('Erro ao enviar o arquivo XML.');
+            }
+        };
+        xhr.send(updatedXml);
     };
 </script>
 

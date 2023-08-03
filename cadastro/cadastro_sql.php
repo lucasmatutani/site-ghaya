@@ -1,6 +1,8 @@
 <?php
 include_once "../includes/connection.php";
 
+use XMLManager;
+
 $zap = $_REQUEST['zap'];
 $codigo_interno = $_REQUEST['codigo_interno'];
 $tipo_imovel = $_REQUEST['tipo_imovel'];
@@ -30,6 +32,11 @@ $nmr_torres = $_REQUEST['nmr_torres'];
 $construcao = $_REQUEST['construcao'];
 $titulo = $_REQUEST['titulo'];
 $descricao = $_REQUEST['descricao'];
+$deposito = $_REQUEST['deposito'];
+$fiador = $_REQUEST['fiador'];
+$seguro = $_REQUEST['seguro'];
+$carta = $_REQUEST['carta'];
+$titulo = $_REQUEST['titulo'];
 
 $ac_animais = @$_POST['ac_animais'];
 $ar_condicionado = @$_POST['ar_condicionado'];
@@ -57,6 +64,108 @@ $elevador = @$_POST['elevador'];
 $lavanderia = @$_POST['lavanderia'];
 $sauna = @$_POST['sauna'];
 $spa = @$_POST['spa'];
+
+$features = array();
+if(isset($_POST['ac_animais'])) $features[] = 'ac_animais';
+if(isset($_POST['ar_condicionado'])) $features[] = 'ar_condicionado';
+if(isset($_POST['closet'])) $features[] = 'closet';
+if(isset($_POST['cozinha_ame'])) $features[] = 'cozinha_americana';
+if(isset($_POST['lareira'])) $features[] = 'lareira';
+if(isset($_POST['mobiliado'])) $features[] = 'mobiliado';
+if(isset($_POST['varanda_gourmet'])) $features[] = 'varanda_gourmet';
+if(isset($_POST['academia'])) $features[] = 'academia';
+if(isset($_POST['churrasqueira'])) $features[] = 'churrasqueira';
+if(isset($_POST['cinema'])) $features[] = 'cinema';
+if(isset($_POST['espaco_gourmet'])) $features[] = 'espaco_gourmet';
+if(isset($_POST['jardim'])) $features[] = 'jardim';
+if(isset($_POST['piscina'])) $features[] = 'piscina';
+if(isset($_POST['playground'])) $features[] = 'playground';
+if(isset($_POST['squash'])) $features[] = 'squash';
+if(isset($_POST['tenis'])) $features[] = 'tenis';
+if(isset($_POST['poliesportiva'])) $features[] = 'quadra_poliesportiva';
+if(isset($_POST['festas'])) $features[] = 'sala_de_festas';
+if(isset($_POST['jogos'])) $features[] = 'sala_de_jogos';
+if(isset($_POST['deficientes'])) $features[] = 'acesso_para_deficientes';
+if(isset($_POST['bicicletario'])) $features[] = 'bicicletario';
+if(isset($_POST['coworking'])) $features[] = 'coworking';
+if(isset($_POST['elevador'])) $features[] = 'elevador';
+if(isset($_POST['lavanderia'])) $features[] = 'lavanderia';
+if(isset($_POST['sauna'])) $features[] = 'sauna';
+if(isset($_POST['spa'])) $features[] = 'spa';
+
+
+$headerInfo = array(
+    'Provider' => 'Desenvolvedor do Feed',
+    'Email' => 'lucasmatutani@gmail.com',
+    'ContactName' => 'Lucas Matutani',
+    'PublishDate' => '2023-06-29',
+    'Telephone' => '11-948610869',
+);
+
+$warranties = array();
+if(isset($_POST['deposito'])) $warranties[] = 'deposito';
+if(isset($_POST['fiador'])) $warranties[] = 'fiador';
+if(isset($_POST['seguro'])) $warranties[] = 'seguro';
+if(isset($_POST['carta'])) $warranties[] = 'carta';
+if(isset($_POST['titulo'])) $warranties[] = 'titulo';
+
+// exemplo de como usar a classe
+$listingData = array(
+    'codigo_interno' => $_REQUEST['codigo_interno'],
+    'titulo' => $_REQUEST['titulo'],
+    'negocio' => $_REQUEST['negocio'],
+    'categoria' => $_REQUEST['categoria'],
+    'preco' => $_REQUEST['preco'],
+    'iptu' => $_REQUEST['iptu'],
+    'tipo_imovel' => $_REQUEST['tipo_imovel'],
+    'descricao' => $_REQUEST['descricao'],
+    'area_util' => $_REQUEST['area_util'],
+    'area_total' => $_REQUEST['area_total'],
+    'banheiros' => $_REQUEST['banheiros'],
+    'quartos' => $_REQUEST['quartos'],
+    'vagas' => $_REQUEST['vagas'],
+    'nmr_andares' => $_REQUEST['nmr_andares'],
+    'andar' => $_REQUEST['andar'],
+    'nmr_torres' => $_REQUEST['nmr_torres'],
+    'suites' => $_REQUEST['suites'],
+    'construcao' => $_REQUEST['construcao'],
+    'features' => $features,  // insira todas as features aqui
+    'warranties' => $warranties,
+    'pais' => 'Brasil',
+    'pais_abbr' => 'BR',
+    'estado' => $_REQUEST['estado'],
+    'estado_abbr' => 'SP', // substitua pela abreviação do estado
+    'cidade' => $_REQUEST['cidade'],
+    'zona' => 'Zona Leste',  // substitua pela zona correta
+    'bairro' => $_REQUEST['bairro'],
+    'endereco' => $_REQUEST['endereco'],
+    'numero' => $_REQUEST['numero'],
+    'complemento' => $_REQUEST['complemento'],
+    'cep' => $_REQUEST['cep'],
+    'nome_contato' => 'Ghaya Imóveis',
+    'email_contato' => 'contato@ghayaimoveis.com.br',
+    'website_contato' => 'http://www.ghayaimoveis.com.br',
+    'logo_contato' => 'http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png',
+    'telefone_contato' => '(11) 5055-5598',
+    'bairro_comercial' => 'Vila Buarque',
+    'endereco_comercial' => 'Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23',
+    'cep_comercial' => '01221-020',
+);
+
+if ($_REQUEST['negocio'] == "Sale/Rent" || $_REQUEST['negocio'] == "For Sale") {
+    $listingData['preco'] = $_REQUEST['preco'];
+}
+
+if ($_REQUEST['negocio'] == "Sale/Rent" || $_REQUEST['negocio'] == "For Rent") {
+    $listingData['aluguel'] = $_REQUEST['aluguel'];
+}
+
+$manager = new XMLManager($headerInfo,'<Listings></Listings>');
+$manager->addListing($listingData);
+
+$manager->saveXML();
+
+
 
 if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
     for ($i = 0; $i < count($_FILES['imagens']['name']); $i++) {
