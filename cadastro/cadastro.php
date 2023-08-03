@@ -146,8 +146,8 @@
                             </label>
                         </div>
                         <div class="form-check select_garantia">
-                            <input class="form-check-input garantias" type="checkbox" value="CAPITALIZATION_BONDS" id="titulo" name="titulo">
-                            <label class="form-check-label" for="titulo">
+                            <input class="form-check-input garantias" type="checkbox" value="CAPITALIZATION_BONDS" id="titulo_capitalizacao" name="titulo_capitalizacao">
+                            <label class="form-check-label" for="titulo_capitalizacao">
                                 Títulos de Capitalização
                             </label>
                         </div>
