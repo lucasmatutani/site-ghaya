@@ -1,4 +1,5 @@
 <?php
+include_once "../includes/connection.php"
 // $sql = "SELECT image_path FROM table";
 // $result = $conn->query($sql);
 // while ($row = $result->fetch_assoc()) {
@@ -510,10 +511,22 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $sql = $conn->query("SELECT images.image_path FROM imoveis JOIN images ON imoveis.codigo_interno = images.imovel_id");
+            ?>
+
             <div class="row md-4">
                 <h3>Fotos</h3>
                 <input type="file" name="images[]" id="images" multiple>
-                <div class="row" id="preview" style="margin-top: 10px; padding: 30px;"></div>
+                <div class="row" id="preview" style="margin-top: 10px; padding: 30px;">
+                    <?php
+                    if (!empty($sql)) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<img src="' . $row['image_path'] . '">';
+                        }
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </form>
@@ -578,11 +591,48 @@
     document.getElementById('images').onchange = function(e) {
         var previewDiv = document.getElementById('preview');
         for (var i = 0; i < e.target.files.length; i++) {
+            var imgWrapper = document.createElement('div');
+            imgWrapper.className = 'imageWrapper';
             var img = document.createElement('img');
             img.src = URL.createObjectURL(e.target.files[i]);
-            previewDiv.appendChild(img);
+            imgWrapper.appendChild(img);
+            var deleteBtn = document.createElement('span');
+            deleteBtn.className = 'deleteImage';
+            deleteBtn.textContent = 'X';
+            imgWrapper.appendChild(deleteBtn);
+            previewDiv.appendChild(imgWrapper);
         }
     };
+
+    // Event listener para botão de exclusão
+    document.getElementById('preview').addEventListener('click', function(e) {
+        if (e.target.classList.contains('deleteImage')) {
+            var imgWrapper = e.target.parentElement;
+            var imgPath = e.target.getAttribute('data-path');
+            imgWrapper.remove();
+            // Exclua a imagem do servidor
+            fetch('delete_image.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        path: imgPath
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+    });
+
+    // document.getElementById('images').onchange = function(e) {
+    //     var previewDiv = document.getElementById('preview');
+    //     for (var i = 0; i < e.target.files.length; i++) {
+    //         var img = document.createElement('img');
+    //         img.src = URL.createObjectURL(e.target.files[i]);
+    //         previewDiv.appendChild(img);
+    //     }
+    // };
 
 
     // const uploadForm = document.querySelector('#form_cadastro');

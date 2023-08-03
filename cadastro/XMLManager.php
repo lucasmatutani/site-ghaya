@@ -51,7 +51,9 @@ class XMLManager
 
         $medias = $newListing->addChild('Media');
         foreach ($listingData['images'] as $media) {
-            $medias->addChild('Feature', $media);
+            $item = $medias->addChild('Item', $media);
+            $item->addAttribute('medium', 'image');
+            // $item->addAttribute('', 'seu_valor');
         }
 
         $details = $newListing->addChild('Details');
