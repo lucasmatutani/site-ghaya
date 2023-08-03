@@ -30,7 +30,7 @@ class XMLManager {
             $this->listingsNode = $this->xml->Listings;
         }
 
-        $newListing = $listings->addChild('Listing');
+        $newListing = $this->listingsNode->addChild('Listing');
         $newListing->addChild('ListingID', $listingData['codigo_interno']);
         $titleNode = dom_import_simplexml($newListing->addChild('Title'));
         $titleNode->appendChild($titleNode->ownerDocument->createCDATASection($listingData['titulo']));
