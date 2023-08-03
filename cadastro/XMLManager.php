@@ -5,14 +5,11 @@ class XMLManager {
 
     public function __construct($headerInfo, $xmlString) {
         if (file_exists('../includes/uploads/listings.xml')) {
-            // Carrega o arquivo XML existente
             $this->xml = simplexml_load_file('../includes/uploads/listings.xml');
             $this->listingsNode = $this->xml->Listings;
         } else {
-            // Cria um novo arquivo XML
             $this->xml = new SimpleXMLElement($xmlString);
 
-            // Adiciona as informações do cabeçalho
             $header = $this->xml->addChild('Header');
             $header->addChild('Provider', $headerInfo['Provider']);
             $header->addChild('Email', $headerInfo['Email']);
@@ -29,16 +26,17 @@ class XMLManager {
         $newListing = $listings->addChild('Listing');
 
         $newListing->addChild('ListingID', $listingData['codigo_interno']);
-        $newListing->addChild('Title')->addCData($listingData['titulo']);
+        $titleNode = dom_import_simplexml($newListing->addChild('Title'));
+        $titleNode->appendChild($titleNode->ownerDocument->createCDATASection($listingData['titulo']));
         $newListing->addChild('TransactionType', $listingData['negocio']);
         $newListing->addChild('PublicationType', $listingData['categoria']);
 
-        // adiciona os detalhes do imóvel
         $details = $newListing->addChild('Details');
         $details->addChild('ListPrice', $listingData['preco'])->addAttribute('currency', 'BRL');
         $details->addChild('YearlyTax', $listingData['iptu'])->addAttribute('currency', 'BRL');
         $details->addChild('PropertyType', $listingData['tipo_imovel']);
-        $details->addChild('Description')->addCData($listingData['descricao']);
+        $descriptionNode = dom_import_simplexml($details->addChild('Description'));
+        $descriptionNode->appendChild($descriptionNode->ownerDocument->createCDATASection($listingData['descricao']));
         $details->addChild('LivingArea', $listingData['area_util'])->addAttribute('unit', 'square metres');
         $details->addChild('LotArea', $listingData['area_total'])->addAttribute('unit', 'square metres');
         $details->addChild('Bathrooms', $listingData['banheiros']);
@@ -51,32 +49,31 @@ class XMLManager {
         $details->addChild('YearBuilt', $listingData['construcao']);
         $details->addChild('UsageType', 'residential');
 
-        // adiciona as características do imóvel
         $features = $details->addChild('Features');
         foreach ($listingData['features'] as $feature) {
             $features->addChild('Feature', $feature);
         }
 
-        // adiciona as garantias do imóvel
         $warranties = $details->addChild('Warranties');
         foreach ($listingData['warranties'] as $warranty) {
             $warranties->addChild('Warranty', $warranty);
         }
 
-        // adiciona a localização do imóvel
         $location = $newListing->addChild('Location');
         $location->addAttribute('displayAddress', 'Street');
         $location->addChild('Country', $listingData['pais'])->addAttribute('abbreviation', $listingData['pais_abbr']);
         $location->addChild('State', $listingData['estado'])->addAttribute('abbreviation', $listingData['estado_abbr']);
-        $location->addChild('City')->addCData($listingData['cidade']);
+        $cityNode = dom_import_simplexml($location->addChild('City'));
+        $cityNode->appendChild($cityNode->ownerDocument->createCDATASection($listingData['cidade']));
         $location->addChild('Zone', $listingData['zona']);
-        $location->addChild('Neighborhood')->addCData($listingData['bairro']);
-        $location->addChild('Address')->addCData($listingData['endereco']);
+        $neighborhoodNode = dom_import_simplexml($location->addChild('Neighborhood'));
+        $neighborhoodNode->appendChild($neighborhoodNode->ownerDocument->createCDATASection($listingData['bairro']));
+        $addressNode = dom_import_simplexml($location->addChild('Address'));
+        $addressNode->appendChild($addressNode->ownerDocument->createCDATASection($listingData['endereco']));
         $location->addChild('StreetNumber', $listingData['numero']);
         $location->addChild('Complement', $listingData['complemento']);
         $location->addChild('PostalCode', $listingData['cep']);
 
-        // adiciona as informações de contato
         $contactInfo = $location->addChild('ContactInfo');
         $contactInfo->addChild('Name', $listingData['nome_contato']);
         $contactInfo->addChild('Email', $listingData['email_contato']);
@@ -118,4 +115,3 @@ class XMLManager {
         return $this->xml->asXML();
     }
 }
-
