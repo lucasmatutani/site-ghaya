@@ -24,7 +24,8 @@ class XMLManager {
     public function addListing($listingData) {
         $listings = $this->xml->Listings;
         $newListing = $listings->addChild('Listing');
-
+        echo $newListing;
+        exit();
         $newListing->addChild('ListingID', $listingData['codigo_interno']);
         $titleNode = dom_import_simplexml($newListing->addChild('Title'));
         $titleNode->appendChild($titleNode->ownerDocument->createCDATASection($listingData['titulo']));
