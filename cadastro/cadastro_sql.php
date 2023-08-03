@@ -6,7 +6,11 @@ $zap = $_REQUEST['zap'];
 $codigo_interno = $_REQUEST['codigo_interno'];
 $tipo_imovel = $_REQUEST['tipo_imovel'];
 $preco = $_REQUEST['preco'];
+$preco = str_replace(['R$ ', '.', ','], ['', '', '.'], $preco);
 $iptu = $_REQUEST['iptu'];
+$iptu = str_replace(['R$ ', '.', ','], ['', '', '.'], $iptu);
+$valor_aluguel = $_REQUEST['valor_aluguel'];
+$valor_aluguel = str_replace(['R$ ', '.', ','], ['', '', '.'], $valor_aluguel);
 $tipo_negocio = $_REQUEST['tipo_negocio'];
 $negocio = $_REQUEST['negocio'];
 $tipo_anuncio = $_REQUEST['tipo_anuncio'];
@@ -31,6 +35,7 @@ $nmr_torres = $_REQUEST['nmr_torres'];
 $construcao = $_REQUEST['construcao'];
 $titulo = $_REQUEST['titulo'];
 $descricao = $_REQUEST['descricao'];
+
 @$deposito = $_REQUEST['deposito'];
 @$fiador = $_REQUEST['fiador'];
 @$seguro = $_REQUEST['seguro'];
@@ -114,7 +119,8 @@ $listingData = array(
     'titulo' => $_REQUEST['titulo'],
     'negocio' => $_REQUEST['negocio'],
     'tipo_anuncio' => $_REQUEST['tipo_anuncio'],
-    'preco' => $_REQUEST['preco'],
+    'preco' => "",
+    'aluguel' => "",
     'iptu' => $_REQUEST['iptu'],
     'tipo_imovel' => $_REQUEST['tipo_imovel'],
     'descricao' => $_REQUEST['descricao'],
@@ -156,7 +162,7 @@ if ($_REQUEST['negocio'] == "Sale/Rent" || $_REQUEST['negocio'] == "For Sale") {
 }
 
 if ($_REQUEST['negocio'] == "Sale/Rent" || $_REQUEST['negocio'] == "For Rent") {
-    $listingData['aluguel'] = $_REQUEST['aluguel'];
+    $listingData['aluguel'] = $_REQUEST['valor_aluguel'];
 }
 
 $manager = new XMLManager($headerInfo,'<Listings></Listings>');
@@ -166,33 +172,33 @@ $manager->saveXML();
 
 
 
-if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
-    for ($i = 0; $i < count($_FILES['imagens']['name']); $i++) {
-        $file_name = $_FILES['imagens']['name'][$i];
-        $file_tmp = $_FILES['imagens']['tmp_name'][$i];
-        $file_type = $_FILES['imagens']['type'][$i];
-        $file_size = $_FILES['imagens']['size'][$i];
-        $file_error = $_FILES['imagens']['error'][$i];
+// if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
+//     for ($i = 0; $i < count($_FILES['imagens']['name']); $i++) {
+//         $file_name = $_FILES['imagens']['name'][$i];
+//         $file_tmp = $_FILES['imagens']['tmp_name'][$i];
+//         $file_type = $_FILES['imagens']['type'][$i];
+//         $file_size = $_FILES['imagens']['size'][$i];
+//         $file_error = $_FILES['imagens']['error'][$i];
 
-        // Verifica se o arquivo foi enviado com sucesso
-        if ($file_error == UPLOAD_ERR_OK) {
+//         // Verifica se o arquivo foi enviado com sucesso
+//         if ($file_error == UPLOAD_ERR_OK) {
 
-            // Define o caminho onde o arquivo será salvo
-            // $caminho = ROOT_PATH . "img/" . $codigo_interno;
-            $caminho = "uploads/" . $codigo_interno;
-            if (!file_exists($caminho)) {
-                mkdir($caminho, 0777, true);
-            }
-            echo $caminho;
-            // Move o arquivo para o diretório de uploads
-            copy($file_tmp, $caminho . "/" . basename($file_tmp));
-        } else {
-            echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
-        }
-    }
-} else {
-    echo "Nenhum arquivo enviado";
-}
+//             // Define o caminho onde o arquivo será salvo
+//             // $caminho = ROOT_PATH . "img/" . $codigo_interno;
+//             $caminho = "uploads/" . $codigo_interno;
+//             if (!file_exists($caminho)) {
+//                 mkdir($caminho, 0777, true);
+//             }
+//             echo $caminho;
+//             // Move o arquivo para o diretório de uploads
+//             copy($file_tmp, $caminho . "/" . basename($file_tmp));
+//         } else {
+//             echo "Erro ao enviar o arquivo: " . $file_error . "<br>";
+//         }
+//     }
+// } else {
+//     echo "Nenhum arquivo enviado";
+// }
 // $data = $conn->query('SELECT * FROM imoveis');
 // $linha = mysqli_fetch_assoc($data);
 // if (!empty($linha) && $linha['usuario_id'] == $usuario_id) {

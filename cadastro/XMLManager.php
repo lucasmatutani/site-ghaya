@@ -1,12 +1,18 @@
 <?php
-class XMLManager {
+class XMLManager
+{
     private $xml;
     private $listingsNode;
 
-    public function __construct($headerInfo, $xmlString) {
+    public function __construct($headerInfo, $xmlString)
+    {
         if (file_exists('../includes/uploads/listings.xml')) {
             $this->xml = simplexml_load_file('../includes/uploads/listings.xml');
-            $this->listingsNode = $this->xml->Listings;
+            if (isset($this->xml->Listings)) {
+                $this->listingsNode = $this->xml->Listings;
+            } else {
+                $this->listingsNode = $this->xml->addChild('Listings');
+            }
         } else {
             $this->xml = new SimpleXMLElement($xmlString);
 
@@ -21,7 +27,8 @@ class XMLManager {
         }
     }
 
-    public function addListing($listingData) {
+    public function addListing($listingData)
+    {
         $listings = $this->xml->Listings;
 
         if (!isset($listings)) {
@@ -35,10 +42,13 @@ class XMLManager {
         $titleNode = dom_import_simplexml($newListing->addChild('Title'));
         $titleNode->appendChild($titleNode->ownerDocument->createCDATASection($listingData['titulo']));
         $newListing->addChild('TransactionType', $listingData['negocio']);
-        $newListing->addChild('PublicationType', $listingData['categoria']);
+        $newListing->addChild('PublicationType', $listingData['tipo_anuncio']);
 
         $details = $newListing->addChild('Details');
         $details->addChild('ListPrice', $listingData['preco'])->addAttribute('currency', 'BRL');
+        if ($listingData['aluguel'] =! NULL){
+            $details->addChild('RentalPrice', $listingData['aluguel'])->addAttribute('currency', 'BRL')->addAttribute('period','Monthly');
+        }
         $details->addChild('YearlyTax', $listingData['iptu'])->addAttribute('currency', 'BRL');
         $details->addChild('PropertyType', $listingData['tipo_imovel']);
         $descriptionNode = dom_import_simplexml($details->addChild('Description'));
@@ -96,15 +106,16 @@ class XMLManager {
         $contactLocation->addChild('PostalCode', $listingData['cep_comercial']);
     }
 
-    public function updateListing($listingId, $newData) {
+    public function updateListing($listingId, $newData)
+    {
         $listings = $this->xml->Listings;
 
-        foreach($listings->children() as $listing) {
-            if((string)$listing->ListingID == $listingId) {
-                foreach($newData as $key => $value) {
-                    if($listing->Details->{$key}) {
+        foreach ($listings->children() as $listing) {
+            if ((string)$listing->ListingID == $listingId) {
+                foreach ($newData as $key => $value) {
+                    if ($listing->Details->{$key}) {
                         $listing->Details->{$key} = $value;
-                    } else if($listing->{$key}) {
+                    } else if ($listing->{$key}) {
                         $listing->{$key} = $value;
                     }
                 }
@@ -113,11 +124,13 @@ class XMLManager {
         }
     }
 
-    public function saveXML() {
+    public function saveXML()
+    {
         $this->xml->asXML('../includes/uploads/listings.xml');
     }
 
-    public function getXMLString() {
+    public function getXMLString()
+    {
         return $this->xml->asXML();
     }
 }

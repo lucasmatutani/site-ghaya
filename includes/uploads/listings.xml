@@ -1,6 +1,6 @@
+<?xml version="1.0"?>
 <xml version="1.0" encoding="UTF-8">
-    <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
+    <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
         <Header>
             <Provider>Desenvolvedor do Feed</Provider>
             <Email>lucasmatutani@gmail.com</Email>
@@ -61,7 +61,7 @@
                     <Complement>ap 52</Complement>
                     <PostalCode>01221-000</PostalCode>
                     <ContactInfo>
-                        <Name>Ghaya Imóveis</Name>
+                        <Name>Ghaya Im&#xF3;veis</Name>
                         <Email>contato@ghayaimoveis.com.br</Email>
                         <Website>http://www.ghayaimoveis.com.br</Website>
                         <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
@@ -69,9 +69,9 @@
                         <Location>
                             <Country abbreviation="BR">Brasil</Country>
                             <State abbreviation="SP">Sao Paulo</State>
-                            <City>São Paulo</City>
+                            <City>S&#xE3;o Paulo</City>
                             <Neighborhood>Vila Buarque</Neighborhood>
-                            <Address>Rua Doutor Cesário Mota Júnior, 369 - Conjunto 23</Address>
+                            <Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address>
                             <PostalCode>01221-020</PostalCode>
                         </Location>
                     </ContactInfo>
@@ -79,4 +79,4 @@
             </Listing>
         </Listings>
     </ListingDataFeed>
-</xml>
+<Listings><Listing><ListingID>12312</ListingID><Title><![CDATA[wadawdawdawdwadawdawdawd]]></Title><TransactionType>Sale/Rent</TransactionType><PublicationType/><Details><ListPrice currency="BRL">R$ 2.312,31</ListPrice><YearlyTax currency="BRL">R$ 30.001.231,23</YearlyTax><PropertyType>Residential / Condo</PropertyType><Description><![CDATA[wadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawd]]></Description><LivingArea unit="square metres">232323</LivingArea><LotArea unit="square metres">232</LotArea><Bathrooms>5</Bathrooms><Bedrooms>3</Bedrooms><Garage type="Parking Space">4</Garage><Floors>323</Floors><UnitFloor>323</UnitFloor><Buildings>4</Buildings><Suites>4</Suites><YearBuilt>232323</YearBuilt><UsageType>residential</UsageType><Features><Feature>ar_condicionado</Feature><Feature>closet</Feature><Feature>mobiliado</Feature><Feature>varanda_gourmet</Feature><Feature>academia</Feature><Feature>cinema</Feature><Feature>jardim</Feature><Feature>playground</Feature><Feature>quadra_poliesportiva</Feature><Feature>sala_de_jogos</Feature><Feature>bicicletario</Feature><Feature>coworking</Feature><Feature>elevador</Feature><Feature>lavanderia</Feature><Feature>sauna</Feature></Features><Warranties><Warranty>deposito</Warranty><Warranty>fiador</Warranty><Warranty>seguro</Warranty><Warranty>carta</Warranty><Warranty>titulo</Warranty></Warranties></Details><Location displayAddress="Street"><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City><![CDATA[São Paulo]]></City><Zone>Zona Leste</Zone><Neighborhood><![CDATA[Vila Buarque]]></Neighborhood><Address><![CDATA[Rua Amaral Gurgel]]></Address><StreetNumber>2323</StreetNumber><Complement>ap 99</Complement><PostalCode>01221-000</PostalCode><ContactInfo><Name>Ghaya Im&#xF3;veis</Name><Email>contato@ghayaimoveis.com.br</Email><Website>http://www.ghayaimoveis.com.br</Website><Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo><Telephone>(11) 5055-5598</Telephone><Location><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City>S&#xE3;o Paulo</City><Neighborhood>Vila Buarque</Neighborhood><Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address><PostalCode>01221-020</PostalCode></Location></ContactInfo></Location></Listing><Listing><ListingID>12312</ListingID><Title><![CDATA[wadawdawdawdwadawdawdawd]]></Title><TransactionType>Sale/Rent</TransactionType><PublicationType/><Details><ListPrice currency="BRL">R$ 2.312,31</ListPrice><YearlyTax currency="BRL">R$ 30.001.231,23</YearlyTax><PropertyType>Residential / Condo</PropertyType><Description><![CDATA[wadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawd]]></Description><LivingArea unit="square metres">232323</LivingArea><LotArea unit="square metres">232</LotArea><Bathrooms>5</Bathrooms><Bedrooms>3</Bedrooms><Garage type="Parking Space">4</Garage><Floors>323</Floors><UnitFloor>323</UnitFloor><Buildings>4</Buildings><Suites>4</Suites><YearBuilt>232323</YearBuilt><UsageType>residential</UsageType><Features><Feature>ar_condicionado</Feature><Feature>closet</Feature><Feature>mobiliado</Feature><Feature>varanda_gourmet</Feature><Feature>academia</Feature><Feature>cinema</Feature><Feature>jardim</Feature><Feature>playground</Feature><Feature>quadra_poliesportiva</Feature><Feature>sala_de_jogos</Feature><Feature>bicicletario</Feature><Feature>coworking</Feature><Feature>elevador</Feature><Feature>lavanderia</Feature><Feature>sauna</Feature></Features><Warranties><Warranty>deposito</Warranty><Warranty>fiador</Warranty><Warranty>seguro</Warranty><Warranty>carta</Warranty><Warranty>titulo</Warranty></Warranties></Details><Location displayAddress="Street"><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City><![CDATA[São Paulo]]></City><Zone>Zona Leste</Zone><Neighborhood><![CDATA[Vila Buarque]]></Neighborhood><Address><![CDATA[Rua Amaral Gurgel]]></Address><StreetNumber>2323</StreetNumber><Complement>ap 99</Complement><PostalCode>01221-000</PostalCode><ContactInfo><Name>Ghaya Im&#xF3;veis</Name><Email>contato@ghayaimoveis.com.br</Email><Website>http://www.ghayaimoveis.com.br</Website><Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo><Telephone>(11) 5055-5598</Telephone><Location><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City>S&#xE3;o Paulo</City><Neighborhood>Vila Buarque</Neighborhood><Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address><PostalCode>01221-020</PostalCode></Location></ContactInfo></Location></Listing></Listings></xml>
