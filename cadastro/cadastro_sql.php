@@ -31,11 +31,11 @@ $nmr_torres = $_REQUEST['nmr_torres'];
 $construcao = $_REQUEST['construcao'];
 $titulo = $_REQUEST['titulo'];
 $descricao = $_REQUEST['descricao'];
-$deposito = $_REQUEST['deposito'];
-$fiador = $_REQUEST['fiador'];
-$seguro = $_REQUEST['seguro'];
-$carta = $_REQUEST['carta'];
-$titulo_capitalizacao = $_REQUEST['titulo_capitalizacao'];
+@$deposito = $_REQUEST['deposito'];
+@$fiador = $_REQUEST['fiador'];
+@$seguro = $_REQUEST['seguro'];
+@$carta = $_REQUEST['carta'];
+@$titulo_capitalizacao = $_REQUEST['titulo_capitalizacao'];
 
 $ac_animais = @$_POST['ac_animais'];
 $ar_condicionado = @$_POST['ar_condicionado'];
