@@ -5,11 +5,9 @@ class XMLManager {
 
     public function __construct($headerInfo, $xmlString) {
         if (file_exists('../includes/uploads/listings.xml')) {
-            exit("EXISTE");
             $this->xml = simplexml_load_file('../includes/uploads/listings.xml');
             $this->listingsNode = $this->xml->Listings;
         } else {
-            exit("NÂO EXISTE");
             $this->xml = new SimpleXMLElement($xmlString);
 
             $header = $this->xml->addChild('Header');
