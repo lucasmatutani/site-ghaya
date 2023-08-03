@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xml version="1.0" encoding="UTF-8">
-    <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
+    <ListingDataFeed xmlns="http://www.vivareal.com/schemas/1.0/VRSync"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vivareal.com/schemas/1.0/VRSync">
         <Header>
             <Provider>Desenvolvedor do Feed</Provider>
             <Email>lucasmatutani@gmail.com</Email>
@@ -10,43 +11,58 @@
         </Header>
         <Listings>
             <Listing>
-                <ListingID>1</ListingID>
-                <Title><![CDATA[CAPITALIZATION_BONDS]]></Title>
-                <TransactionType>Sale/Rent</TransactionType>
-                <PublicationType>PREMIUM</PublicationType>
-                <Media/>
+                <ListingID>2321</ListingID>
+                <Title><![CDATA[wedawedawdawwdawedawedawdawwdawedawedawdawwda]]></Title>
+                <TransactionType>For Sale</TransactionType>
+                <PublicationType>STANDARD</PublicationType>
+                <Media>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321</Feature>
+                </Media>
                 <Details>
-                    <ListPrice currency="BRL">22232</ListPrice>
-                    <RentalPrice currency="BRL" period="Monthly">123123</RentalPrice>
-                    <YearlyTax currency="BRL">23232</YearlyTax>
-                    <PropertyType>Residential / Village House</PropertyType>
-                    <Description><![CDATA[awdawdawdawdawdawdawdawdawdawdawdawdawdawdjawpdjawdjkapwkdpoawkopdkawopkdopawkdopawkopdkawpkodaw]]></Description>
-                    <LivingArea unit="square metres">23213</LivingArea>
-                    <LotArea unit="square metres">232323</LotArea>
-                    <PropertyAdministrationFee currency="BRL">232323</PropertyAdministrationFee>
-                    <Bathrooms>6</Bathrooms>
-                    <Bedrooms>3</Bedrooms>
+                    <ListPrice currency="BRL">3434</ListPrice>
+                    <PropertyAdministrationFee currency="BRL">3434343</PropertyAdministrationFee>
+                    <YearlyTax currency="BRL">343434</YearlyTax>
+                    <PropertyType>Residential / Home</PropertyType>
+                    <Description><![CDATA[wedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwda]]></Description>
+                    <LivingArea unit="square metres">3434</LivingArea>
+                    <LotArea unit="square metres">343434</LotArea>
+                    <Bathrooms>5</Bathrooms>
+                    <Bedrooms>4</Bedrooms>
                     <Garage type="Parking Space">6</Garage>
-                    <Floors>22</Floors>
-                    <UnitFloor>23</UnitFloor>
-                    <Buildings>3</Buildings>
-                    <Suites>5</Suites>
-                    <YearBuilt>12312</YearBuilt>
+                    <Floors>2342</Floors>
+                    <UnitFloor>343</UnitFloor>
+                    <Buildings>5</Buildings>
+                    <Suites>6</Suites>
+                    <YearBuilt>32432</YearBuilt>
                     <UsageType>residential</UsageType>
                     <Features>
                         <Feature>Cooling</Feature>
-                        <Feature>Fireplace</Feature>
+                        <Feature>Closet</Feature>
                         <Feature>Furnished</Feature>
+                        <Feature>BBQ</Feature>
                         <Feature>Media Room</Feature>
+                        <Feature>Gourmet Area</Feature>
                         <Feature>Garden Area</Feature>
-                        <Feature>Playground</Feature>
+                        <Feature>Squash</Feature>
+                        <Feature>Sports Court</Feature>
+                        <Feature>Game room</Feature>
+                        <Feature>Bicycles Place</Feature>
+                        <Feature>Meeting Room</Feature>
                         <Feature>Elevator</Feature>
-                        <Feature>Sauna</Feature>
+                        <Feature>Laundry</Feature>
                     </Features>
                     <Warranties>
-                        <Warranty>SECURITY_DEPOSIT</Warranty>
-                        <Warranty>INSURANCE_GUARANTEE</Warranty>
-                        <Warranty>GUARANTEE_LETTER</Warranty>
                         <Warranty>CAPITALIZATION_BONDS</Warranty>
                     </Warranties>
                 </Details>
@@ -54,29 +70,88 @@
                     <Country abbreviation="BR">Brasil</Country>
                     <State abbreviation="SP">SP</State>
                     <City><![CDATA[São Paulo]]></City>
-                    <Zone>Zona Oeste</Zone>
+                    <Zone>Zona Leste</Zone>
                     <Neighborhood><![CDATA[Vila Buarque]]></Neighborhood>
                     <Address><![CDATA[Rua Amaral Gurgel]]></Address>
-                    <StreetNumber>556</StreetNumber>
-                    <Complement>ap 52</Complement>
+                    <StreetNumber>3434</StreetNumber>
+                    <Complement>34343</Complement>
                     <PostalCode>01221-000</PostalCode>
-                    <ContactInfo>
-                        <Name>Ghaya Im&#xF3;veis</Name>
-                        <Email>contato@ghayaimoveis.com.br</Email>
-                        <Website>http://www.ghayaimoveis.com.br</Website>
-                        <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
-                        <Telephone>(11) 5055-5598</Telephone>
-                        <Location>
-                            <Country abbreviation="BR">Brasil</Country>
-                            <State abbreviation="SP">Sao Paulo</State>
-                            <City>S&#xE3;o Paulo</City>
-                            <Neighborhood>Vila Buarque</Neighborhood>
-                            <Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address>
-                            <PostalCode>01221-020</PostalCode>
-                        </Location>
-                    </ContactInfo>
                 </Location>
+                <ContactInfo>
+                    <Name><![CDATA[Ghaya Imóveis]]></Name>
+                    <Email>contato@ghayaimoveis.com.br</Email>
+                    <Website>http://www.ghayaimoveis.com.br</Website>
+                    <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                    <Telephone>(11) 5055-5598</Telephone>
+                </ContactInfo>
+            </Listing>
+            <Listing>
+                <ListingID>2321</ListingID>
+                <Title><![CDATA[wedawedawdawwdawedawedawdawwdawedawedawdawwda]]></Title>
+                <TransactionType>For Sale</TransactionType>
+                <PublicationType>STANDARD</PublicationType>
+                <Media>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321Capturadetela2023-03-12180305.png</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321Capturadetela2023-03-13120730.png</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321Capturadetela2023-03-13164916.png</Feature>
+                    <Feature>https://ghayaimoveis.com/includes/uploads/images/2321Capturadetela2023-03-13184242.png</Feature>
+                </Media>
+                <Details>
+                    <ListPrice currency="BRL">3434</ListPrice>
+                    <PropertyAdministrationFee currency="BRL">3434343</PropertyAdministrationFee>
+                    <YearlyTax currency="BRL">343434</YearlyTax>
+                    <PropertyType>Residential / Home</PropertyType>
+                    <Description><![CDATA[wedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwdawedawedawdawwda]]></Description>
+                    <LivingArea unit="square metres">3434</LivingArea>
+                    <LotArea unit="square metres">343434</LotArea>
+                    <Bathrooms>5</Bathrooms>
+                    <Bedrooms>4</Bedrooms>
+                    <Garage type="Parking Space">6</Garage>
+                    <Floors>2342</Floors>
+                    <UnitFloor>343</UnitFloor>
+                    <Buildings>5</Buildings>
+                    <Suites>6</Suites>
+                    <YearBuilt>32432</YearBuilt>
+                    <UsageType>residential</UsageType>
+                    <Features>
+                        <Feature>Cooling</Feature>
+                        <Feature>Closet</Feature>
+                        <Feature>Furnished</Feature>
+                        <Feature>BBQ</Feature>
+                        <Feature>Media Room</Feature>
+                        <Feature>Gourmet Area</Feature>
+                        <Feature>Garden Area</Feature>
+                        <Feature>Squash</Feature>
+                        <Feature>Sports Court</Feature>
+                        <Feature>Game room</Feature>
+                        <Feature>Bicycles Place</Feature>
+                        <Feature>Meeting Room</Feature>
+                        <Feature>Elevator</Feature>
+                        <Feature>Laundry</Feature>
+                    </Features>
+                    <Warranties>
+                        <Warranty>CAPITALIZATION_BONDS</Warranty>
+                    </Warranties>
+                </Details>
+                <Location displayAddress="Street">
+                    <Country abbreviation="BR">Brasil</Country>
+                    <State abbreviation="SP">SP</State>
+                    <City><![CDATA[São Paulo]]></City>
+                    <Zone>Zona Leste</Zone>
+                    <Neighborhood><![CDATA[Vila Buarque]]></Neighborhood>
+                    <Address><![CDATA[Rua Amaral Gurgel]]></Address>
+                    <StreetNumber>3434</StreetNumber>
+                    <Complement>34343</Complement>
+                    <PostalCode>01221-000</PostalCode>
+                </Location>
+                <ContactInfo>
+                    <Name><![CDATA[Ghaya Imóveis]]></Name>
+                    <Email>contato@ghayaimoveis.com.br</Email>
+                    <Website>http://www.ghayaimoveis.com.br</Website>
+                    <Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo>
+                    <Telephone>(11) 5055-5598</Telephone>
+                </ContactInfo>
             </Listing>
         </Listings>
     </ListingDataFeed>
-<Listings><Listing><ListingID>12312</ListingID><Title><![CDATA[wadawdawdawdwadawdawdawd]]></Title><TransactionType>Sale/Rent</TransactionType><PublicationType/><Details><ListPrice currency="BRL">R$ 2.312,31</ListPrice><YearlyTax currency="BRL">R$ 30.001.231,23</YearlyTax><PropertyType>Residential / Condo</PropertyType><Description><![CDATA[wadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawd]]></Description><LivingArea unit="square metres">232323</LivingArea><LotArea unit="square metres">232</LotArea><Bathrooms>5</Bathrooms><Bedrooms>3</Bedrooms><Garage type="Parking Space">4</Garage><Floors>323</Floors><UnitFloor>323</UnitFloor><Buildings>4</Buildings><Suites>4</Suites><YearBuilt>232323</YearBuilt><UsageType>residential</UsageType><Features><Feature>ar_condicionado</Feature><Feature>closet</Feature><Feature>mobiliado</Feature><Feature>varanda_gourmet</Feature><Feature>academia</Feature><Feature>cinema</Feature><Feature>jardim</Feature><Feature>playground</Feature><Feature>quadra_poliesportiva</Feature><Feature>sala_de_jogos</Feature><Feature>bicicletario</Feature><Feature>coworking</Feature><Feature>elevador</Feature><Feature>lavanderia</Feature><Feature>sauna</Feature></Features><Warranties><Warranty>deposito</Warranty><Warranty>fiador</Warranty><Warranty>seguro</Warranty><Warranty>carta</Warranty><Warranty>titulo</Warranty></Warranties></Details><Location displayAddress="Street"><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City><![CDATA[São Paulo]]></City><Zone>Zona Leste</Zone><Neighborhood><![CDATA[Vila Buarque]]></Neighborhood><Address><![CDATA[Rua Amaral Gurgel]]></Address><StreetNumber>2323</StreetNumber><Complement>ap 99</Complement><PostalCode>01221-000</PostalCode><ContactInfo><Name>Ghaya Im&#xF3;veis</Name><Email>contato@ghayaimoveis.com.br</Email><Website>http://www.ghayaimoveis.com.br</Website><Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo><Telephone>(11) 5055-5598</Telephone><Location><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City>S&#xE3;o Paulo</City><Neighborhood>Vila Buarque</Neighborhood><Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address><PostalCode>01221-020</PostalCode></Location></ContactInfo></Location></Listing><Listing><ListingID>12312</ListingID><Title><![CDATA[wadawdawdawdwadawdawdawd]]></Title><TransactionType>Sale/Rent</TransactionType><PublicationType/><Details><ListPrice currency="BRL">R$ 2.312,31</ListPrice><YearlyTax currency="BRL">R$ 30.001.231,23</YearlyTax><PropertyType>Residential / Condo</PropertyType><Description><![CDATA[wadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawdwadawdawdawd]]></Description><LivingArea unit="square metres">232323</LivingArea><LotArea unit="square metres">232</LotArea><Bathrooms>5</Bathrooms><Bedrooms>3</Bedrooms><Garage type="Parking Space">4</Garage><Floors>323</Floors><UnitFloor>323</UnitFloor><Buildings>4</Buildings><Suites>4</Suites><YearBuilt>232323</YearBuilt><UsageType>residential</UsageType><Features><Feature>ar_condicionado</Feature><Feature>closet</Feature><Feature>mobiliado</Feature><Feature>varanda_gourmet</Feature><Feature>academia</Feature><Feature>cinema</Feature><Feature>jardim</Feature><Feature>playground</Feature><Feature>quadra_poliesportiva</Feature><Feature>sala_de_jogos</Feature><Feature>bicicletario</Feature><Feature>coworking</Feature><Feature>elevador</Feature><Feature>lavanderia</Feature><Feature>sauna</Feature></Features><Warranties><Warranty>deposito</Warranty><Warranty>fiador</Warranty><Warranty>seguro</Warranty><Warranty>carta</Warranty><Warranty>titulo</Warranty></Warranties></Details><Location displayAddress="Street"><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City><![CDATA[São Paulo]]></City><Zone>Zona Leste</Zone><Neighborhood><![CDATA[Vila Buarque]]></Neighborhood><Address><![CDATA[Rua Amaral Gurgel]]></Address><StreetNumber>2323</StreetNumber><Complement>ap 99</Complement><PostalCode>01221-000</PostalCode><ContactInfo><Name>Ghaya Im&#xF3;veis</Name><Email>contato@ghayaimoveis.com.br</Email><Website>http://www.ghayaimoveis.com.br</Website><Logo>http://www.ghayaimoveis.com.br/assets/images/logo/logo-ghaya.png</Logo><Telephone>(11) 5055-5598</Telephone><Location><Country abbreviation="BR">Brasil</Country><State abbreviation="SP">SP</State><City>S&#xE3;o Paulo</City><Neighborhood>Vila Buarque</Neighborhood><Address>Rua Doutor Ces&#xE1;rio Mota J&#xFA;nior, 369 - Conjunto 23</Address><PostalCode>01221-020</PostalCode></Location></ContactInfo></Location></Listing></Listings></xml>
+</xml>
