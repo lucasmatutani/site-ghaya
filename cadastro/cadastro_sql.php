@@ -1,7 +1,6 @@
 <?php
 include_once "../includes/connection.php";
-
-use XMLManager;
+include './XMLManager.php';
 
 $zap = $_REQUEST['zap'];
 $codigo_interno = $_REQUEST['codigo_interno'];
