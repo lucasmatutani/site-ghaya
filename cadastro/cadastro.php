@@ -676,28 +676,28 @@ include_once "../includes/connection.php"
         $('#preco').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '',
+            thousands: '.',
             decimal: '',
             affixesStay: true
         });
         $('#iptu').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '',
+            thousands: '.',
             decimal: '',
             affixesStay: true
         });
         $('#valor_aluguel').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '',
+            thousands: '.',
             decimal: '',
             affixesStay: true
         });
         $('#condominio').maskMoney({
             prefix: 'R$ ',
             allowNegative: true,
-            thousands: '',
+            thousands: '.',
             decimal: '',
             affixesStay: true
         });
