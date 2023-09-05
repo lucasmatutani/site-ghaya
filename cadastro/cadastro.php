@@ -23,6 +23,7 @@ include_once "../includes/connection.php"
 
 <body>
     <form action="cadastro_sql.php" method="POST" id="form_cadastro" enctype="multipart/form-data">
+        <input type="hidden" id="listingId" value="<?php echo $_GET["id"] ?>">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-2" style="margin-bottom: 30px !important;">
@@ -518,20 +519,25 @@ include_once "../includes/connection.php"
             <div class="row md-4">
                 <h3>Fotos</h3>
                 <input type="file" name="images[]" id="images" multiple>
-                <div class="row" id="preview" style="margin-top: 10px; padding: 30px;">
+                <div id="preview" style="margin-top: 10px; padding: 30px;">
                     <?php
                     if (!empty($sql)) {
-                        while ($row = $result->fetch_assoc()) {
+                        while ($row = $sql->fetch_assoc()) {
+                            echo '<div class="imgWrapper">';
                             echo '<img src="' . $row['image_path'] . '">';
+                            echo '<button class="deleteImage" data-path="' . $row['image_path'] . '">Excluir</button>';
+                            echo '</div>';
                         }
                     }
                     ?>
                 </div>
             </div>
+
         </div>
     </form>
     <div class="btn-submit">
-        <input type="submit" value="Cadastrar imóvel" onclick="submitForm(event)">
+        <input type="submit" value="Salvar Imóvel" onclick="submitForm(event)">
+        <input id="removeListing" type="submit" value="Apagar Imóvel" style="background-color: red;">
     </div>
 </body>
 
@@ -588,14 +594,44 @@ include_once "../includes/connection.php"
 
     }
 
+    document.getElementById('removeListing').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var listingId = document.getElementById('listingId').value;
+
+        fetch('remove_listing.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    listingId: listingId
+                }),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Listing removed successfully.');
+                } else {
+                    alert('Failed to remove listing.');
+                }
+            });
+    });
+
+    var allFiles = [];
     document.getElementById('images').onchange = function(e) {
         var previewDiv = document.getElementById('preview');
+
         for (var i = 0; i < e.target.files.length; i++) {
+            allFiles.push(e.target.files[i]); // Acumulando os arquivos
+
             var imgWrapper = document.createElement('div');
             imgWrapper.className = 'imageWrapper';
+
             var img = document.createElement('img');
             img.src = URL.createObjectURL(e.target.files[i]);
             imgWrapper.appendChild(img);
+
             var deleteBtn = document.createElement('span');
             deleteBtn.className = 'deleteImage';
             deleteBtn.textContent = 'X';
@@ -604,12 +640,12 @@ include_once "../includes/connection.php"
         }
     };
 
-    // Event listener para botão de exclusão
     document.getElementById('preview').addEventListener('click', function(e) {
         if (e.target.classList.contains('deleteImage')) {
             var imgWrapper = e.target.parentElement;
             var imgPath = e.target.getAttribute('data-path');
             imgWrapper.remove();
+
             // Exclua a imagem do servidor
             fetch('delete_image.php', {
                     method: 'POST',
@@ -625,50 +661,7 @@ include_once "../includes/connection.php"
         }
     });
 
-    // document.getElementById('images').onchange = function(e) {
-    //     var previewDiv = document.getElementById('preview');
-    //     for (var i = 0; i < e.target.files.length; i++) {
-    //         var img = document.createElement('img');
-    //         img.src = URL.createObjectURL(e.target.files[i]);
-    //         previewDiv.appendChild(img);
-    //     }
-    // };
 
-
-    // const uploadForm = document.querySelector('#form_cadastro');
-    // const fileInput = document.querySelector('#file_input');
-    // const previewDiv = document.querySelector('#preview');
-    // let previews = [];
-
-    // fileInput.addEventListener('change', () => {
-    //     // Percorra todos os arquivos selecionados pelo usuário
-    //     for (const file of fileInput.files) {
-    //         // Verifique se o arquivo já foi carregado antes
-    //         if (!previews.some(preview => preview.name === file.name)) {
-    //             // Crie um objeto FileReader para ler o conteúdo do arquivo
-    //             const reader = new FileReader();
-    //             reader.onload = () => {
-    //                 // Crie um elemento de imagem para exibir a prévia do arquivo
-    //                 const img = document.createElement('img');
-    //                 img.src = reader.result;
-    //                 img.style.width = '300px';
-    //                 img.style.height = '200px';
-    //                 img.style.margin = '0 0 40px 0';
-    //                 const div = document.createElement('div');
-    //                 div.classList.add("col")
-    //                 div.appendChild(img);
-    //                 previewDiv.appendChild(div);
-
-    //                 // Adicione a prévia do arquivo à matriz de prévias
-    //                 previews.push({
-    //                     name: file.name,
-    //                     url: reader.result
-    //                 });
-    //             };
-    //             reader.readAsDataURL(file);
-    //         }
-    //     }
-    // });
 
     $(document).ready(function() {
         $("#cep").mask("99999-999");
@@ -719,11 +712,17 @@ include_once "../includes/connection.php"
         }
     });
 
-
-
     function submitForm(event) {
         event.preventDefault();
 
+        imageInput = document.getElementById("images");
+        const dataTransfer = new DataTransfer();
+
+        allFiles.forEach(file => {
+            dataTransfer.items.add(file);
+        });
+
+        imageInput.files = dataTransfer.files;
         document.getElementById("form_cadastro").submit();
     };
 </script>

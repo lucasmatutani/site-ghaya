@@ -16,6 +16,7 @@ p {
 
 .btn-submit {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -25,7 +26,7 @@ p {
     border: 1px solid #000;
     border-radius: 200px;
     padding: 20px 40px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-weight: bold;
 }
 
@@ -37,3 +38,46 @@ p {
 .disable {
     display: none !important;
 }
+
+/* Estilo para a div preview */
+#preview {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens sejam quebrados na próxima linha */
+    gap: 10px; /* Espaçamento entre cada item */
+    margin-top: 10px;
+}
+
+/* Estilo para cada wrapper de imagem */
+.imageWrapper {
+    position: relative; /* Necessário para posicionar o botão de excluir corretamente */
+    display: inline-block;
+}
+
+/* Estilo para o botão de excluir */
+.deleteImage {
+    position: absolute;
+    top: 0; /* Posicionado no topo */
+    right: 0; /* Posicionado à direita */
+    background-color: rgba(255, 0, 0, 0.7); /* Vermelho semi-transparente */
+    color: #fff; /* Texto branco */
+    cursor: pointer; /* Mostra o cursor como uma mãozinha */
+    border: none; /* Remove bordas padrão do botão */
+    padding: 5px 10px; /* Adiciona um pequeno espaçamento interno */
+    border-radius: 50%; /* Faz o botão parecer um círculo */
+    font-weight: bold; /* Texto em negrito */
+    font-size: 14px; /* Tamanho do texto */
+    transition: background-color 0.3s; /* Efeito de transição para o hover */
+}
+
+/* Efeito de hover para o botão de excluir */
+.deleteImage:hover {
+    background-color: rgba(255, 0, 0, 0.9); /* Vermelho um pouco mais opaco no hover */
+}
+
+/* Estilo para as imagens dentro do .imageWrapper */
+.imageWrapper img {
+    width: 30vw; /* Certifica-se de que a imagem não exceda o wrapper */
+    height: 20vh;
+    border-radius: 4px; /* Adiciona bordas arredondadas à imagem */
+}
+

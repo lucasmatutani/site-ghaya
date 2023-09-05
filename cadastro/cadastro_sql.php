@@ -149,7 +149,6 @@ if ($data->num_rows > 0) {
     }
 }
 
-// exemplo de como usar a classe
 $listingData = array(
     'codigo_interno' => $_REQUEST['codigo_interno'],
     'titulo' => $_REQUEST['titulo'],

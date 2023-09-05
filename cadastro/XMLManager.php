@@ -6,7 +6,7 @@ class XMLManager
     private $uploadsDir = '../includes/uploads/';
     private $listingsFile = 'listings.xml';
 
-    public function __construct($headerInfo, $xmlString)
+    public function __construct($headerInfo = null , $xmlString = null)
     {
         if (file_exists($this->uploadsDir . $this->listingsFile)) {
             $this->xml = simplexml_load_file($this->uploadsDir . $this->listingsFile);
