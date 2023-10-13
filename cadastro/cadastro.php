@@ -23,7 +23,7 @@ include_once "../includes/connection.php"
 
 <body>
     <form action="cadastro_sql.php" method="POST" id="form_cadastro" enctype="multipart/form-data">
-        <input type="hidden" id="listingId" value="<?php echo $_GET["id"] ?>">
+        <input type="hidden" id="listingId" value="<?php echo @$_GET["id"] ?>">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
             <div class="row mb-2" style="margin-bottom: 30px !important;">
@@ -537,7 +537,9 @@ include_once "../includes/connection.php"
     </form>
     <div class="btn-submit">
         <input type="submit" value="Salvar Imóvel" onclick="submitForm(event)">
+        <?php if(isset($_GET['id'])){ ?>
         <input id="removeListing" type="submit" value="Apagar Imóvel" style="background-color: red;">
+        <?php } ?>
     </div>
 </body>
 
