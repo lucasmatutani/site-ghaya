@@ -21,16 +21,17 @@ include_once "../includes/connection.php"
         <input type="hidden" id="listingId" value="<?php echo @$_GET["id"] ?>">
         <div class="residencial">
             <h1 style="margin-bottom: 50px;">Cadastros de imóvel</h1>
+
             <div class="row mb-2" style="margin-bottom: 30px !important;">
-                <div class="col-3">
-                    <p>O Imóvel é</p>
+                <div class="col-2">
+                    <p>Imóvel destaque ? (interno)</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="residential" value="residential" onclick="residencial()" required checked>
-                        <label class="form-check-label" for="residential">Residencial</label>
+                        <input class="form-check-input" type="radio" name="imovel_destaque" id="destaque_sim" value="1" required checked>
+                        <label class="form-check-label" for="destaque_sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo_negocio" id="commercial" value="Commercial" onclick="comercial()" required>
-                        <label class="form-check-label" for="commercial">Comercial</label>
+                        <input class="form-check-input" type="radio" name="imovel_destaque" id="destaque_nao" value="0" required>
+                        <label class="form-check-label" for="destaque_nao">Não</label>
                     </div>
                 </div>
                 <div class="col-2">
@@ -42,6 +43,20 @@ include_once "../includes/connection.php"
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="zap" id="nao" value="0" required>
                         <label class="form-check-label" for="nao">Não</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-2" style="margin-bottom: 30px !important;">
+                <div class="col-2">
+                    <p>O Imóvel é</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="residential" value="residential" onclick="residencial()" required checked>
+                        <label class="form-check-label" for="residential">Residencial</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo_negocio" id="commercial" value="Commercial" onclick="comercial()" required>
+                        <label class="form-check-label" for="commercial">Comercial</label>
                     </div>
                 </div>
                 <div class="col-4">
@@ -60,6 +75,7 @@ include_once "../includes/connection.php"
                     </div>
                 </div>
             </div>
+
             <div class="row mb-2" style="margin-bottom: 30px !important;">
                 <div class="col-2">
                     <p style="margin: 0 0 8px 0;">Tipo Anúncio</p>
@@ -619,7 +635,9 @@ include_once "../includes/connection.php"
         return '_' + Math.random().toString(36).substr(2, 9);
     }
 
-    allFiles = [];
+    var allFiles = [];
+    var highlightedCheckbox = null;
+
     document.getElementById('images').onchange = function(e) {
         var previewDiv = document.getElementById('preview');
 
@@ -627,8 +645,9 @@ include_once "../includes/connection.php"
             const uuid = createUUID();
             allFiles.push({
                 file: e.target.files[i],
-                uuid: uuid
-            }); // Adiciona um objeto com o arquivo e o UUID
+                uuid: uuid,
+                destaque: 0 // Adiciona um campo destaque
+            });
 
             var imgWrapper = document.createElement('div');
             imgWrapper.className = 'imageWrapper';
@@ -640,8 +659,40 @@ include_once "../includes/connection.php"
             var deleteBtn = document.createElement('span');
             deleteBtn.className = 'deleteImage';
             deleteBtn.textContent = 'X';
-            deleteBtn.setAttribute('data-uuid', uuid); // Usa o UUID em vez do índice
+            deleteBtn.setAttribute('data-uuid', uuid);
             imgWrapper.appendChild(deleteBtn);
+
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'highlightCheckbox';
+            checkbox.setAttribute('data-uuid', uuid);
+            checkbox.addEventListener('change', function(e) {
+                if (highlightedCheckbox && highlightedCheckbox !== e.target) {
+                    highlightedCheckbox.checked = false;
+
+                    // Encontre o objeto relacionado ao checkbox desmarcado e defina destaque como 0
+                    const oldUUID = highlightedCheckbox.getAttribute('data-uuid');
+                    const oldFileObj = allFiles.find(obj => obj.uuid === oldUUID);
+                    if (oldFileObj) {
+                        oldFileObj.destaque = 0;
+                    }
+                }
+                highlightedCheckbox = e.target;
+
+                // Encontre o objeto relacionado ao checkbox marcado e defina destaque como 1
+                const newUUID = e.target.getAttribute('data-uuid');
+                const newFileObj = allFiles.find(obj => obj.uuid === newUUID);
+                if (newFileObj) {
+                    newFileObj.destaque = 1;
+                }
+            });
+
+            imgWrapper.appendChild(checkbox);
+
+            var label = document.createElement('label');
+            label.innerHTML = 'Imagem Destaque';
+            imgWrapper.appendChild(label);
+
             previewDiv.appendChild(imgWrapper);
         }
     };
@@ -736,6 +787,7 @@ include_once "../includes/connection.php"
         // Adicione todas as imagens de allFiles ao formData
         allFiles.forEach((obj, index) => {
             formData.append(`images[${index}]`, obj.file); // Ajustado para usar obj.file
+            formData.append(`destaque[${index}]`, obj.destaque);
         });
 
         // Logar o conteúdo de formData
@@ -749,14 +801,9 @@ include_once "../includes/connection.php"
                 method: 'POST',
                 body: formData
             })
-            // .then(response => response.text()) // Aqui, mudamos de response.json() para response.text()
-            // .then(data => {
-            //     console.log(data); // A saída de var_dump aparecerá aqui
-            // });
             .then(response => {
                 if (response.ok) {
                     alert('Imóvel salvo com sucesso!');
-                    window.location.reload();
                 } else {
                     alert('Falha ao salvar o imóvel.');
                 }

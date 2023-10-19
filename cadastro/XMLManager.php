@@ -51,14 +51,15 @@ class XMLManager
 
         $medias = $newListing->addChild('Media');
         foreach ($listingData['images'] as $media) {
-            $item = $medias->addChild('Item', $media);
+            $item = $medias->addChild('Item', $media['path']);
             $item->addAttribute('medium', 'image');
+            if($media['destaque'] == 1){
+                $item->addAttribute('primary', 'true');
+            }
             // $item->addAttribute('', 'seu_valor');
         }
 
         $details = $newListing->addChild('Details');
-        // var_dump($listingData);
-        // exit();
         if (strlen($listingData['preco']) > 0) {
             $details->addChild('ListPrice', $listingData['preco'])->addAttribute('currency', 'BRL');
         }
