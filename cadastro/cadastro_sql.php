@@ -116,7 +116,7 @@ if (isset($_POST['carta'])) $warranties[] = 'GUARANTEE_LETTER';
 if (isset($_POST['titulo'])) $warranties[] = 'CAPITALIZATION_BONDS';
 
 if (isset($_FILES['images']['name'])) {
-
+    var_dump($_FILES);
     $folder_name = '../includes/uploads/images/' . $codigo_interno;
     
     // Criar a pasta
@@ -125,6 +125,7 @@ if (isset($_FILES['images']['name'])) {
     }
     
     foreach ($_FILES['images']['name'] as $key => $name) {
+      
         $filename = $_FILES['images']['name'][$key];
         $filename = str_replace(' ', '', $filename);
         $destination = $folder_name . '/' . $filename;
@@ -210,13 +211,13 @@ $manager->saveXML();
 
 
 
-// if (isset($_FILES['imagens']) && count($_FILES['imagens']['name']) > 0) {
-//     for ($i = 0; $i < count($_FILES['imagens']['name']); $i++) {
-//         $file_name = $_FILES['imagens']['name'][$i];
-//         $file_tmp = $_FILES['imagens']['tmp_name'][$i];
-//         $file_type = $_FILES['imagens']['type'][$i];
-//         $file_size = $_FILES['imagens']['size'][$i];
-//         $file_error = $_FILES['imagens']['error'][$i];
+// if (isset($_FILES['images']) && count($_FILES['images']['name']) > 0) {
+//     for ($i = 0; $i < count($_FILES['images']['name']); $i++) {
+//         $file_name = $_FILES['images']['name'][$i];
+//         $file_tmp = $_FILES['images']['tmp_name'][$i];
+//         $file_type = $_FILES['images']['type'][$i];
+//         $file_size = $_FILES['images']['size'][$i];
+//         $file_error = $_FILES['images']['error'][$i];
 
 //         // Verifica se o arquivo foi enviado com sucesso
 //         if ($file_error == UPLOAD_ERR_OK) {

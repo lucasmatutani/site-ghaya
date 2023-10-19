@@ -1,10 +1,5 @@
 <?php
 include_once "../includes/connection.php"
-// $sql = "SELECT image_path FROM table";
-// $result = $conn->query($sql);
-// while ($row = $result->fetch_assoc()) {
-//     echo '<img src="' . $row['image_path'] . '">';
-// }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -512,23 +507,21 @@ include_once "../includes/connection.php"
                     </div>
                 </div>
             </div>
-            <?php
-            $sql = $conn->query("SELECT images.image_path FROM imoveis JOIN images ON imoveis.codigo_interno = images.imovel_id");
-            ?>
+            <?php $sql = $conn->query("SELECT images.image_path FROM imoveis JOIN images ON imoveis.codigo_interno = images.imovel_id"); ?>
 
             <div class="row md-4">
                 <h3>Fotos</h3>
                 <input type="file" name="images[]" id="images" multiple>
                 <div id="preview" style="margin-top: 10px; padding: 30px;">
                     <?php
-                    if (!empty($sql)) {
-                        while ($row = $sql->fetch_assoc()) {
-                            echo '<div class="imgWrapper">';
-                            echo '<img src="' . $row['image_path'] . '">';
-                            echo '<button class="deleteImage" data-path="' . $row['image_path'] . '">Excluir</button>';
-                            echo '</div>';
-                        }
-                    }
+                    // if (!empty($sql)) {
+                    //     while ($row = $sql->fetch_assoc()) {
+                    //         echo '<div class="imgWrapper">';
+                    //         echo '<img src="' . $row['image_path'] . '">';
+                    //         echo '<button class="deleteImage" data-path="' . $row['image_path'] . '">Excluir</button>';
+                    //         echo '</div>';
+                    //     }
+                    // }
                     ?>
                 </div>
             </div>
@@ -537,8 +530,8 @@ include_once "../includes/connection.php"
     </form>
     <div class="btn-submit">
         <input type="submit" value="Salvar Imóvel" onclick="submitForm(event)">
-        <?php if(isset($_GET['id'])){ ?>
-        <input id="removeListing" type="submit" value="Apagar Imóvel" style="background-color: red;">
+        <?php if (isset($_GET['id'])) { ?>
+            <input id="removeListing" type="submit" value="Apagar Imóvel" style="background-color: red;">
         <?php } ?>
     </div>
 </body>
@@ -596,36 +589,46 @@ include_once "../includes/connection.php"
 
     }
 
-    document.getElementById('removeListing').addEventListener('submit', function(e) {
-        e.preventDefault();
+    if (document.getElementById('removeListing')) {
+        document.getElementById('removeListing').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        var listingId = document.getElementById('listingId').value;
+            var listingId = document.getElementById('listingId').value;
 
-        fetch('remove_listing.php', {
-                method: 'POST',
-                body: JSON.stringify({
-                    listingId: listingId
-                }),
-                headers: {
-                    'Content-type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Listing removed successfully.');
-                } else {
-                    alert('Failed to remove listing.');
-                }
-            });
-    });
+            fetch('remove_listing.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        listingId: listingId
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Listing removed successfully.');
+                    } else {
+                        alert('Failed to remove listing.');
+                    }
+                });
+        });
+    }
 
-    var allFiles = [];
+    function createUUID() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    allFiles = [];
     document.getElementById('images').onchange = function(e) {
         var previewDiv = document.getElementById('preview');
 
         for (var i = 0; i < e.target.files.length; i++) {
-            allFiles.push(e.target.files[i]); // Acumulando os arquivos
+            const uuid = createUUID();
+            allFiles.push({
+                file: e.target.files[i],
+                uuid: uuid
+            }); // Adiciona um objeto com o arquivo e o UUID
 
             var imgWrapper = document.createElement('div');
             imgWrapper.className = 'imageWrapper';
@@ -637,6 +640,7 @@ include_once "../includes/connection.php"
             var deleteBtn = document.createElement('span');
             deleteBtn.className = 'deleteImage';
             deleteBtn.textContent = 'X';
+            deleteBtn.setAttribute('data-uuid', uuid); // Usa o UUID em vez do índice
             imgWrapper.appendChild(deleteBtn);
             previewDiv.appendChild(imgWrapper);
         }
@@ -644,8 +648,19 @@ include_once "../includes/connection.php"
 
     document.getElementById('preview').addEventListener('click', function(e) {
         if (e.target.classList.contains('deleteImage')) {
-            var imgWrapper = e.target.parentElement;
-            var imgPath = e.target.getAttribute('data-path');
+            const imgWrapper = e.target.parentElement;
+            const uuid = e.target.getAttribute('data-uuid'); // Pega o UUID
+            const imgElement = imgWrapper.querySelector('img'); // Pega o elemento da imagem
+            const imgPath = imgElement.src; // Agora imgPath contém o caminho da imagem
+
+            console.log('UUID to delete:', uuid);
+            console.log('All files before delete:', allFiles);
+
+            // Remove o arquivo com o UUID correspondente
+            allFiles = allFiles.filter(obj => obj.uuid !== uuid);
+
+            console.log('All files after delete:', allFiles);
+
             imgWrapper.remove();
 
             // Exclua a imagem do servidor
@@ -662,8 +677,6 @@ include_once "../includes/connection.php"
                 .then(data => console.log(data));
         }
     });
-
-
 
     $(document).ready(function() {
         $("#cep").mask("99999-999");
@@ -716,17 +729,39 @@ include_once "../includes/connection.php"
 
     function submitForm(event) {
         event.preventDefault();
+        document.getElementById('images').value = '';
 
-        imageInput = document.getElementById("images");
-        const dataTransfer = new DataTransfer();
+        const formData = new FormData(document.getElementById("form_cadastro"));
 
-        allFiles.forEach(file => {
-            dataTransfer.items.add(file);
+        // Adicione todas as imagens de allFiles ao formData
+        allFiles.forEach((obj, index) => {
+            formData.append(`images[${index}]`, obj.file); // Ajustado para usar obj.file
         });
 
-        imageInput.files = dataTransfer.files;
-        document.getElementById("form_cadastro").submit();
-    };
+        // Logar o conteúdo de formData
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0] + ', ' + pair[1]);
+        // }
+        // Aqui, você pode adicionar mais campos ao formData se necessário
+        // formData.append("outroCampo", valorDoOutroCampo);
+
+        fetch('./cadastro_sql.php', {
+                method: 'POST',
+                body: formData
+            })
+            // .then(response => response.text()) // Aqui, mudamos de response.json() para response.text()
+            // .then(data => {
+            //     console.log(data); // A saída de var_dump aparecerá aqui
+            // });
+            .then(response => {
+                if (response.ok) {
+                    alert('Imóvel salvo com sucesso!');
+                    window.location.reload();
+                } else {
+                    alert('Falha ao salvar o imóvel.');
+                }
+            });
+    }
 </script>
 
 </html>
