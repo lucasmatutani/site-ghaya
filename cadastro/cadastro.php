@@ -348,7 +348,7 @@ include_once "../includes/connection.php"
             <div class="row md-4">
                 <div class="col-3">
                     <p>Código do Anúncio (interno)</p>
-                    <input type="text" id="TextInput" class="form-control" name="codigo_interno" placeholder="" required>
+                    <input type="text" id="codigo_interno" class="form-control" name="codigo_interno" placeholder="" readonly>
                 </div>
                 <div class="col">
                     <p>Título da Descrição</p>
