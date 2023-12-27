@@ -1,5 +1,15 @@
 <?php
+include_once "./includes/connection.php";
 session_start();
+
+$sql = "SELECT * FROM imoveis WHERE destaque = 1";
+$result = $conn->query($sql);
+
+$status = [
+    "For Sale" => "Venda",
+    "For Rent" => "Aluguel",
+    "Sale/Rent" => "Venda/Aluguel",
+];
 ?>
 
 <head>
@@ -337,33 +347,36 @@ session_start();
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="carousel carousel-dots" data-slide="3" data-slide-rs="2" data-autoplay="true" data-nav="false" data-dots="true" data-space="25" data-loop="true" data-speed="800">
                             <!-- .property-item #1 -->
-                            <div class="property-item">
-                                <div class="property--img">
-                                    <a href="#">
-                                        <img src="assets/images/properties/3.jpg" alt="property image" class="img-responsive" loading="lazy">
-                                        <span class="property--status">Venda</span>
-                                    </a>
-                                </div>
-                                <div class="property--content">
-                                    <div class="property--info">
-                                        <h5 class="property--title"><a href="#">Apartment in Long St.</a></h5>
-                                        <p class="property--location">34 Long St, Jersey City, NJ 07305</p>
-                                        <p class="property--price">$70,000</p>
+                            <?php while ($destaque = $result->fetch_assoc()) { ?>
+                                <div class="property-item">
+                                    <div class="property--img">
+                                        <a href="#">
+                                            <img src="assets/images/properties/3.jpg" alt="property image" class="img-responsive" loading="lazy">
+                                            <span class="property--status"><?php echo isset($status[$destaque["negocio"]]) ? $status[$destaque["negocio"]] : "" ?></span>
+                                        </a>
                                     </div>
-                                    <!-- .property-info end -->
-                                    <div class="property--features">
-                                        <ul class="list-unstyled mb-0">
-                                            <li><span class="feature">Beds:</span><span class="feature-num">2</span>
-                                            </li>
-                                            <li><span class="feature">Baths:</span><span class="feature-num">1</span>
-                                            </li>
-                                            <li><span class="feature">Area:</span><span class="feature-num">200 sq
-                                                    ft</span></li>
-                                        </ul>
+                                    <div class="property--content">
+                                        <div class="property--info">
+                                            <h5 class="property--title"><a href="#"><?php echo $destaque["titulo"] ?></a></h5>
+                                            <p class="property--location"><?php echo $destaque["endereco"] . ", " .$destaque["bairro"] ?></p>
+                                            <p class="property--price"><?php echo $destaque["preco"] ?></p>
+                                        </div>
+                                        <!-- .property-info end -->
+                                        <div class="property--features">
+                                            <ul class="list-unstyled mb-0" style="margin-bottom: 10px !important;">
+                                                <li><span class="feature">Condomínio:</span><span class="feature-num"><?php echo $destaque["condominio"] ?></span></li>
+                                                <li><span class="feature">Iptu:</span><span class="feature-num"><?php echo $destaque["iptu"] ?></span></li>
+                                            </ul>
+                                            <ul class="list-unstyled mb-0">
+                                                <li><span class="feature">Quartos:</span><span class="feature-num"><?php echo $destaque["quartos"] ?></span></li>
+                                                <li><span class="feature">Banheiros:</span><span class="feature-num"><?php echo $destaque["banheiros"] ?></span></li>
+                                                <li><span class="feature">Vagas:</span><span class="feature-num"><?php echo $destaque["vagas"] ?></span></li>
+                                            </ul>
+                                        </div>
+                                        <!-- .property-features end -->
                                     </div>
-                                    <!-- .property-features end -->
                                 </div>
-                            </div>
+                            <?php } ?>
                             <!-- .property item end -->
 
                             <!-- .property-item #2 -->
